@@ -16,13 +16,13 @@ export class AuthadminService {
     
     const user = await this.adminService.findUsernameEmail(createAdminDto.username);
     if(!user || user == null){
-      throw new NotFoundException('User not exist!', { cause: new Error(), description: 'Some error description' })
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'El usuario no se encuentra registrado en nuesta base de datos' })
     }
     if(user.isActive == false){
-      throw new NotFoundException('User no is active!', { cause: new Error(), description: 'Some error description' })
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'El usuario se encuentra desactivado, contactar con el administrador' })
     }
     if (user.password !== createAdminDto.pass) {
-      throw new UnauthorizedException();
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'La contraseña no es correcta' })
     }
 
     const payload = { sub: user.id, email: user.email };
@@ -34,6 +34,9 @@ export class AuthadminService {
 
   async refreshToken(tokenDto: TokenDto): Promise<any> {
     const tokenUsuario = await this.jwtService.decode(tokenDto.token)
+    if(!tokenUsuario){
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'token invalido' })
+    }
     const user = await this.adminService.findUsernameEmail(tokenUsuario.email);
     const payload = { sub: user.id, email: user.email };
     const token = await  this.jwtService.sign(payload);

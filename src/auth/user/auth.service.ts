@@ -16,13 +16,13 @@ export class AuthuserService {
     
     const user = await this.userService.findUsernameEmail(createUserDto.username);
     if(!user || user == null){
-      throw new NotFoundException('User not exist!', { cause: new Error(), description: 'Some error description' })
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'El usuario no se encuentra registrado en nuesta base de datos' })
     }
     if(user.isActive == false){
-      throw new NotFoundException('User no is active!', { cause: new Error(), description: 'Some error description' })
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'El usuario se encuentra desactivado, contactar con el administrador' })
     }
     if (user.password !== createUserDto.pass) {
-      throw new UnauthorizedException();
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'La contraseña no es correcta' })
     }
 
     const payload = { sub: user.id, email: user.email };
@@ -30,12 +30,13 @@ export class AuthuserService {
       access_token: await this.jwtService.signAsync(payload),
     };
 
-    // throw new BadRequestException('Something bad happened', { cause: new Error(), description: 'Some error description' })
-
   }
 
   async refreshToken(tokenDto: TokenDto): Promise<any> {
     const tokenUsuario = await this.jwtService.decode(tokenDto.token)
+    if(!tokenUsuario){
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'token invalido' })
+    }
     const user = await this.userService.findUsernameEmail(tokenUsuario.email);
     const payload = { sub: user.id, email: user.email };
     const token = await  this.jwtService.sign(payload);
