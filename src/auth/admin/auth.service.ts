@@ -38,6 +38,9 @@ export class AuthadminService {
       throw new NotFoundException('Error!', { cause: new Error(), description: 'token invalido' })
     }
     const user = await this.adminService.findUsernameEmail(tokenUsuario.email);
+    if(!user){
+      throw new NotFoundException('Error!', { cause: new Error(), description: 'user not exists' })
+    }
     const payload = { sub: user.id, email: user.email };
     const token = await  this.jwtService.sign(payload);
     return token;
