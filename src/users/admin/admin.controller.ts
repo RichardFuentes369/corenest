@@ -17,7 +17,7 @@ export class AdminController {
   }
   
   @Get()
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   findAll(@Query() paginationDto: PaginationDto) {
     return this.adminService.findAll(paginationDto);
   }

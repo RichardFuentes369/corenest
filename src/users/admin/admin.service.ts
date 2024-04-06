@@ -13,7 +13,14 @@ export class AdminService {
     private adminRepository: Repository<Admin>,
   ) {}
 
-  create(createAdminDto: CreateAdminDto) {
+  async create(createAdminDto: CreateAdminDto) {
+
+    const encontrarCorreo = await this.findUsernameEmail(createAdminDto.email)
+
+    if(encontrarCorreo) throw new NotFoundException(`
+      Este correo ${createAdminDto.email}, ya esta registrado en nuestra base de datos
+    `)
+
     return this.adminRepository.save(createAdminDto);
   }
   

@@ -13,7 +13,13 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
+    
+    const encontrarCorreo = await this.findUsernameEmail(createUserDto.email)
+
+    if(encontrarCorreo) throw new NotFoundException(`
+      Este correo ${createUserDto.email}, ya esta registrado en nuestra base de datos
+    `)
     return this.userRepository.save(createUserDto);
   }
   
