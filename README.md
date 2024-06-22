@@ -4,7 +4,7 @@
 2. ignoramos el .env
 3. instalamos class validator
 ```
-npm i --save class-validator class-transformer
+  npm i --save class-validator class-transformer
 ```
 3. instalamos typeorm
   ```
@@ -20,9 +20,14 @@ npm i --save class-validator class-transformer
 ```
 6. instalamos config
 ```
-npm i --save @nestjs/config
+  npm i --save @nestjs/config
 ```
 7. instalamos el jwt
 ```
-npm install --save @nestjs/jwt
+  npm install --save @nestjs/jwt
 ```
+8.. instalamos swagger
+```
+  npm install --save @nestjs/swagger
+```
+nest start --watch
