@@ -4,7 +4,7 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 
 import { Repository } from 'typeorm';
 import { Admin } from './entities/admin.entity';
-import { PaginationDto } from '../../global/dto/pagination.dto';
+import { PaginationDto } from '../../../global/dto/pagination.dto';
 
 @Injectable()
 export class AdminService {

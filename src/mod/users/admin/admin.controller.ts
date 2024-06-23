@@ -3,7 +3,7 @@ import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 
-import { PaginationDto } from '../../global/dto/pagination.dto';
+import { PaginationDto } from '../../../global/dto/pagination.dto';
 
 import { AuthGuard } from '../../auth/admin/auth.guard';
 import { ApiTags } from '@nestjs/swagger';
