@@ -2,6 +2,8 @@ import { Injectable, NotFoundException, UnauthorizedException, BadRequestExcepti
 import { AdminService } from '../../users/admin/admin.service';
 import { JwtService } from '@nestjs/jwt';
 
+import { I18nService } from 'nestjs-i18n';
+
 import { CreateAuthadminDto } from './dto/create-auth.dto';
 import { TokenDto } from './dto/token.dto';
 
@@ -9,20 +11,22 @@ import { TokenDto } from './dto/token.dto';
 export class AuthadminService {
   constructor(
     private adminService: AdminService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private i18n: I18nService
   ) {}
   
   async signIn(createAdminDto: CreateAuthadminDto): Promise<any> {
-    
+
     const user = await this.adminService.findUsernameEmail(createAdminDto.username);
+
     if(!user || user == null){
-      throw new NotFoundException('Error!', { cause: new Error(), description: 'El usuario no se encuentra registrado en nuesta base de datos' })
+      throw new NotFoundException(this.i18n.t('auth.ERROR'), { cause: new Error(), description: this.i18n.t('auth.MSN_NOT_REGISTER') });
     }
     if(user.isActive == false){
-      throw new NotFoundException('Error!', { cause: new Error(), description: 'El usuario se encuentra desactivado, contactar con el administrador' })
+      throw new NotFoundException(this.i18n.t('auth.ERROR'), { cause: new Error(), description: this.i18n.t('auth.MSN_IS_DESACTIVED') });
     }
     if (user.password !== createAdminDto.pass) {
-      throw new NotFoundException('Error!', { cause: new Error(), description: 'La contraseña no es correcta' })
+      throw new NotFoundException(this.i18n.t('auth.ERROR'), { cause: new Error(), description: this.i18n.t('auth.PASSWORD_INVALID') });
     }
 
     const payload = { sub: user.id, email: user.email };
