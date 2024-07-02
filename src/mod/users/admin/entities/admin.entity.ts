@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Permisos } from 'src/mod/permisos/entities/permisos.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class Admin {
@@ -19,4 +20,7 @@ export class Admin {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @OneToMany(() => Permisos, (permiso) => permiso.user)
+  permiso: Permisos
 }
