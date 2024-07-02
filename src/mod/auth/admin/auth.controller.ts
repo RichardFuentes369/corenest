@@ -8,7 +8,7 @@ import {
   Request,
   UseGuards
 } from '@nestjs/common';
-import { AuthGuard } from './auth.guard';
+import { AdminGuard } from '../../../guards/roles/admin/admin.guard';
 import { AuthadminService } from './auth.service';
 import { CreateAuthadminDto } from './dto/create-auth.dto';
 import { TokenDto } from './dto/token.dto';
@@ -33,7 +33,7 @@ export class AuthadminController {
   }
   
   @ApiTags('autenticacion_admin')
-  @UseGuards(AuthGuard)
+  @UseGuards(AdminGuard)
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;

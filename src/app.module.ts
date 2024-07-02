@@ -21,7 +21,7 @@ import { AdminModule, AuthadminModule, UserModule, AuthuserModule } from './mod/
     I18nModule.forRoot({
       fallbackLanguage: 'es',
       loaderOptions: {
-        path: path.join(__dirname, '/i18n/'),
+        path: path.join(__dirname, 'assets/i18n/'),
         watch: true,
       },
       typesOutputPath: path.join(__dirname, '../src/generated/i18n.generated.ts'),

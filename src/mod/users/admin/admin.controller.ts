@@ -5,7 +5,7 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 
 import { PaginationDto } from '../../../global/dto/pagination.dto';
 
-import { AuthGuard } from '../../auth/admin/auth.guard';
+import { AdminGuard } from '../../../guards/roles/admin/admin.guard';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('admin')
@@ -20,7 +20,7 @@ export class AdminController {
   
   @ApiTags('admin')
   @Get()
-  // @UseGuards(AuthGuard)
+  // @UseGuards(AdminGuard)
   findAll(@Query() paginationDto: PaginationDto) {
     return this.adminService.findAll(paginationDto);
   }
