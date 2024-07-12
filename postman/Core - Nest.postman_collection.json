@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "c1e94cbd-6f64-4ed2-9cd1-1ef5e011622a",
-		"name": "Core",
+		"name": "Core - Nest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "7819792"
 	},
@@ -28,7 +28,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/user?page=1&limit=10&field=id&order=asc",
+									"raw": "localhost:3000/api/user?page=1&limit=3&field=id&order=asc",
 									"host": [
 										"localhost"
 									],
@@ -44,7 +44,7 @@
 										},
 										{
 											"key": "limit",
-											"value": "10"
+											"value": "3"
 										},
 										{
 											"key": "field",
@@ -86,7 +86,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Usuario2\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user2@gmail.com\",\r\n    \"isActive\": true\r\n}",
+									"raw": "{\r\n    \"firstName\": \"Usuario3\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user3@gmail.com\",\r\n    \"isActive\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -113,7 +113,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/user/2",
+									"raw": "localhost:3000/api/user/3",
 									"host": [
 										"localhost"
 									],
@@ -121,7 +121,7 @@
 									"path": [
 										"api",
 										"user",
-										"2"
+										"3"
 									]
 								}
 							},
@@ -177,7 +177,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/admin?page=1&limit=5&field=id&order=asc",
+									"raw": "localhost:3000/api/admin?page=1&limit=2&field=id&order=asc",
 									"host": [
 										"localhost"
 									],
@@ -193,7 +193,7 @@
 										},
 										{
 											"key": "limit",
-											"value": "5"
+											"value": "2"
 										},
 										{
 											"key": "field",
@@ -235,7 +235,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"AdminName2\",\r\n    \"lastName\": \"AdminLastname2\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"admin11@correo.com\",\r\n    \"isActive\": true\r\n}",
+									"raw": "{\r\n    \"firstName\": \"AdminName1\",\r\n    \"lastName\": \"AdminLastname1\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"admin1@correo.com\",\r\n    \"isActive\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -308,7 +308,7 @@
 					]
 				}
 			],
-			"description": "Logica usuarios"
+			"description": "Logica usuario administradores\n\nLogica usuarios finales\n\nLogica asignar permisos\n\nLogica crear modulos"
 		},
 		{
 			"name": "Login",
@@ -344,6 +344,35 @@
 				},
 				{
 					"name": "singinUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user1@gmail.com\",\r\n    \"pass\": \"Qwerty9601\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/authuser/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"authuser",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singinUser Copy",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -486,6 +515,28 @@
 								"refresh"
 							]
 						}
+					},
+					"response": []
+				}
+			],
+			"description": "Logica autenticacion\n\nadministrador  \nusuario final\n\nrefrescar token"
+		},
+		{
+			"name": "ModPublicaciones",
+			"item": [
+				{
+					"name": "Tags",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Publicacion",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
