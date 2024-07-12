@@ -1,7 +1,7 @@
 import { Permisos } from 'src/mod/usuarios/permisos/entities/permisos.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
-@Entity()
+@Entity('mod_usuarios_admin')
 export class Admin {
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -12,7 +12,7 @@ export class Admin {
   @Column()
   lastName: string;
   
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
