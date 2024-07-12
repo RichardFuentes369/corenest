@@ -5,7 +5,7 @@ import { AuthuserController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from '../../../guards/constante';
 
-import { UserModule } from '../../users/user/user.module';
+import { UserModule } from '../../usuarios/user/user.module';
 @Module({
   imports: [
     UserModule, 

@@ -24,3 +24,4 @@ export class PermisosService {
     return `This action removes a #${id} permiso`;
   }
 }
+  

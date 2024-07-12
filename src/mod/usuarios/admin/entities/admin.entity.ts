@@ -1,4 +1,4 @@
-import { Permisos } from 'src/mod/permisos/entities/permisos.entity';
+import { Permisos } from 'src/mod/usuarios/permisos/entities/permisos.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()

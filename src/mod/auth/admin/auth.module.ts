@@ -5,7 +5,7 @@ import { AuthadminController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from '../../../guards/constante';
 
-import { AdminModule } from '../../users/admin/admin.module';
+import { AdminModule } from '../../usuarios/admin/admin.module';
 
 @Module({
   imports: [

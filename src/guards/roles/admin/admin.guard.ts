@@ -4,7 +4,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { AdminService } from '../../../mod/users/admin/admin.service';
+import { AdminService } from '../../../mod/usuarios/admin/admin.service';
 import { JwtService } from '@nestjs/jwt';
 import { jwtConstants } from '../../constante';
 import { Request } from 'express';

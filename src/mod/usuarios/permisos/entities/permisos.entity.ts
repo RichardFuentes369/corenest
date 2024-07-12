@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Modulos } from './modulos.entity';
-import { Admin } from 'src/mod/users/admin/entities/admin.entity';
+import { Admin } from 'src/mod/usuarios/admin/entities/admin.entity';
 
 @Entity()
 export class Permisos {
