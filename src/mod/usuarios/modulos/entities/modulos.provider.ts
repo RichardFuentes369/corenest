@@ -1,10 +1,11 @@
+
 import { DataSource } from 'typeorm';
-import { Modulos } from './modulos.entity';
+import { Modulo } from './modulos.entity';
 
 export const modulosProvider = [
   {
     provide: 'MODULES_REPOSITORY',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(Modulos),
+    useFactory: (dataSource: DataSource) => dataSource.getRepository(Modulo),
     inject: ['DATA_SOURCE'],
   },
 ];

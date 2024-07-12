@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Modulos } from './modulos.entity';
+import { Modulo } from '../../modulos/entities/modulos.entity';
 import { Admin } from 'src/mod/usuarios/admin/entities/admin.entity';
 
 @Entity('mod_usuarios_permisos')
@@ -9,10 +9,16 @@ export class Permisos {
 
   @Column()
   nombre: string;
+  
+  @Column()
+  userId: number;
+
+  @Column()
+  moduloId: number;
 
   @ManyToOne(() => Admin, (admin) => admin.id)
-  user: Modulos
+  user: Modulo
 
-  @ManyToOne(() => Modulos, (modulo) => modulo.id)
-  modulo: Modulos
+  @ManyToOne(() => Modulo, (modulo) => modulo.id)
+  modulo: Modulo
 }

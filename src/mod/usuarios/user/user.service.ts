@@ -14,7 +14,6 @@ export class UserService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    
     const encontrarCorreo = await this.findUsernameEmail(createUserDto.email)
 
     if(encontrarCorreo) throw new NotFoundException(`

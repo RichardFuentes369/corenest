@@ -12,7 +12,7 @@ export const mysqlProviders = [
         password: process.env.DATABASEPASSWORD,
         database: process.env.DATABASENAME,
         entities: [
-            __dirname + '/../../**/*.entity{.ts,.js}',
+          __dirname + '/../../**/*.entity{.ts,.js}',
         ],
         synchronize: true,
       });

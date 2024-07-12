@@ -1,29 +1,33 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { CreateAdminDto } from './dto/create-admin.dto';
-import { UpdateAdminDto } from './dto/update-admin.dto';
+import { CreateModuloDto } from './dto/create-modulo.dto';
+import { UpdateModuloDto } from './dto/update-modulo.dto';
 
 import { Repository } from 'typeorm';
-import { Admin } from './entities/admin.entity';
+import { Modulo } from './entities/modulos.entity';
 import { PaginationDto } from '../../../global/dto/pagination.dto';
 
 @Injectable()
-export class AdminService {
+export class ModulosService {
   constructor(
-    @Inject('ADMIN_REPOSITORY')
-    private adminRepository: Repository<Admin>,
+    @Inject('MODULES_REPOSITORY')
+    private moduloRepository: Repository<Modulo>,
   ) {}
 
-  async create(createAdminDto: CreateAdminDto) {
-
-    const encontrarCorreo = await this.findUsernameEmail(createAdminDto.email)
-
-    if(encontrarCorreo) throw new NotFoundException(`
-      Este correo ${createAdminDto.email}, ya esta registrado en nuestra base de datos
-    `)
-
-    return this.adminRepository.save(createAdminDto);
+  async findNameModule(nombre: string): Promise<Modulo>{
+    return this.moduloRepository.findOne({
+      where: [ {nombre : nombre}]
+    });
   }
-  
+
+  async create(createModuloDto: CreateModuloDto) {
+    const encontrarModulo = await this.findNameModule(createModuloDto.nombre)
+
+    if(encontrarModulo) throw new NotFoundException(`
+      El modulo con nombre ${createModuloDto.nombre}, ya esta registrado en nuestra base de datos
+    `)
+    return this.moduloRepository.save(createModuloDto);
+  }
+
   listarPropiedadesTabla(T) {
     const metadata = T.metadata;
     return metadata.columns.map((column) => column.propertyName);
@@ -42,7 +46,7 @@ export class AdminService {
     if(!paginationDto.limit) throw new NotFoundException(`Debe enviar el parametro limit`)
 
     if(field != ''){
-      const propiedades = this.listarPropiedadesTabla(this.adminRepository)
+      const propiedades = this.listarPropiedadesTabla(this.moduloRepository)
       const arratResult = propiedades.filter(obj => obj === field).length
   
       if(arratResult == 0) throw new NotFoundException(`El parametro de busqueda ${field} no existe en la base de datos`)
@@ -51,7 +55,7 @@ export class AdminService {
     const skipeReal = (page == 1) ? 0 : (page - 1) * limit
 
     const peticion = async (page) => {
-      return await this.adminRepository.find({
+      return await this.moduloRepository.find({
         skip: page,
         take: limit,
         order: {
@@ -75,31 +79,20 @@ export class AdminService {
     }]
   }
 
-  findOne(id: number) {
-    return this.adminRepository.findOne({
-      where: [ {id : id}],
-      order: { id: 'DESC' }
-    });
-  }
-
-  async update(id: number, updateAdminDto: UpdateAdminDto) {
-    const property = await this.adminRepository.findOne({
+  async update(id: number, updateModuloDto: UpdateModuloDto) {
+    const property = await this.moduloRepository.findOne({
       where: { id }
     });
     
-    return this.adminRepository.save({
+    return this.moduloRepository.save({
       ...property, // existing fields
-      ...updateAdminDto // updated fields
+      ...updateModuloDto // updated fields
     });
   }
 
   remove(id: number) {
-    return this.adminRepository.delete(id);
+    return this.moduloRepository.delete(id);
   }
 
-  async findUsernameEmail(username: string): Promise<Admin>{
-    return this.adminRepository.findOne({
-      where: [ {email : username}]
-    });
-  }
+
 }

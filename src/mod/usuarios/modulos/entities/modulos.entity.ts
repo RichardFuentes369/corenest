@@ -1,8 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Permisos } from './permisos.entity';
 
 @Entity('mod_usuarios_modulos')
-export class Modulos {
+export class Modulo {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -11,7 +10,4 @@ export class Modulos {
 
   @Column()
   icono: string;
-
-  @OneToMany(() => Permisos, (permiso) => permiso.modulo)
-  permiso: Permisos
-}
+} 

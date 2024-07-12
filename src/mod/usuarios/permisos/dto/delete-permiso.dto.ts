@@ -1,6 +1,6 @@
 import { IsInt, IsNumber, IsString } from "class-validator";
 
-export class CreatePermisoDto {
+export class DeletePermisoDto  {
 
   @IsString()
   // @Transform(({value}) => value.trim())

@@ -21,6 +21,6 @@ export class Admin {
   @Column({ default: true })
   isActive: boolean;
 
-  @OneToMany(() => Permisos, (permiso) => permiso.user)
+  @OneToMany(() => Permisos, (permiso) => permiso.userId)
   permiso: Permisos
 }
