@@ -29,7 +29,7 @@ export class AuthadminService {
       throw new NotFoundException(this.i18n.t('auth.ERROR'), { cause: new Error(), description: this.i18n.t('auth.PASSWORD_INVALID') });
     }
 
-    const payload = { sub: user.id, email: user.email };
+    const payload = { id: user.id, email: user.email };
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
@@ -45,7 +45,7 @@ export class AuthadminService {
     if(!user){
       throw new NotFoundException('Error!', { cause: new Error(), description: 'user not exists' })
     }
-    const payload = { sub: user.id, email: user.email };
+    const payload = { id: user.id, email: user.email };
     const token = await  this.jwtService.sign(payload);
     return token;
   }

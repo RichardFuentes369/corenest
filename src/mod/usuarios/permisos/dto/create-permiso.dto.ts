@@ -8,6 +8,10 @@ export class CreatePermisoDto {
 
   @IsInt()
   // @Transform(({value}) => value.trim())
+  readonly tipo;
+
+  @IsInt()
+  // @Transform(({value}) => value.trim())
   readonly userId;
 
   @IsInt()

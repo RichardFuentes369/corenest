@@ -14,17 +14,25 @@ export class PermisosController {
   constructor(private readonly permisosService: PermisosService) {}
 
   @ApiTags('permisos')
-  @Get(':idUser/:nombre')
-  findOne(@Param('idUser') idUser: string, @Param('nombre') nombre: string) {
-    return this.permisosService.findOne(+idUser, nombre);
+  @Get('mis-permisos/:idUser')
+  // @UseGuards(AdminGuard)
+  permisosModulo(@Param('idUser') idUser: string) {
+    return this.permisosService.permisosModulo(+idUser);
   }
 
   @ApiTags('permisos')
-  @Get(':id')
+  @Get('mis-permisos/:idUser/por-modulo/:idModulo')
   // @UseGuards(AdminGuard)
-  findAll(@Param('id') id: string) {
-    return this.permisosService.findAll(+id);
+  permisosOpcionesModulo(@Param('idUser') idUser: string, @Param('idModulo') idModulo: string) {
+    return this.permisosService.permisosSobreModulo(+idUser, +idModulo);
   }
+
+  @ApiTags('permisos')
+  @Get('yo/:idUser/tengo-permiso-a/:idModulo/para/:nombre')
+  findOne(@Param('idUser') idUser: string, @Param('idModulo') idModulo: string, @Param('nombre') nombre: string) {
+    return this.permisosService.findOne(+idUser, +idModulo, nombre);
+  }
+
 
   @ApiTags('permisos')
   @Post()

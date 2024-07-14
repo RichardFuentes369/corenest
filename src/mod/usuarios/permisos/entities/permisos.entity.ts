@@ -6,10 +6,13 @@ import { Admin } from 'src/mod/usuarios/admin/entities/admin.entity';
 export class Permisos {
   @PrimaryGeneratedColumn('increment')
   id: number;
+  
+  @Column()
+  tipo: number;
 
   @Column()
   nombre: string;
-  
+
   @Column()
   userId: number;
 
