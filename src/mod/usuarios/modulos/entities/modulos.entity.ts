@@ -10,4 +10,7 @@ export class Modulo {
 
   @Column()
   icono: string;
+
+  @Column({ unique: true })
+  url: string;
 } 
