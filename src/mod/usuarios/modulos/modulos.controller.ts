@@ -21,8 +21,15 @@ export class ModulosController {
   @ApiTags('modulos')
   @Get('')
   // @UseGuards(AdminGuard)
-  findAll(@Query() paginationDto: PaginationDto) {
-    return this.modulosService.findAll(paginationDto);
+  findAllPaginado(@Query() paginationDto: PaginationDto) {
+    return this.modulosService.findAllPaginado(paginationDto);
+  }
+
+  @ApiTags('modulos')
+  @Get('listar-modulos')
+  // @UseGuards(AdminGuard)
+  findAll() {
+    return this.modulosService.findAll();
   }
 
   @ApiTags('modulos')

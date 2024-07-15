@@ -13,7 +13,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @ApiTags('user')
-  @Post()
+  @Post('crear-usuario')
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
@@ -25,19 +25,19 @@ export class UserController {
   }
   
   @ApiTags('user')
-  @Get(':id')
+  @Get('obtener-usuario/:id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
   
   @ApiTags('user')
-  @Patch(':id')
+  @Patch('editar-usuario/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(+id, updateUserDto);
   }
   
   @ApiTags('user')
-  @Delete(':id')
+  @Delete('eliminar-usuario/:id')
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
   }

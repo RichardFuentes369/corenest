@@ -35,13 +35,13 @@ export class PermisosController {
 
 
   @ApiTags('permisos')
-  @Post()
+  @Post('asignar-permiso')
   create(@Body() createPermisoDto: CreatePermisoDto) {
     return this.permisosService.create(createPermisoDto);
   }
 
   @ApiTags('permisos')
-  @Delete()
+  @Delete('eliminar-permiso')
   remove(@Body() deletePermisoDto: DeletePermisoDto) {
     return this.permisosService.remove(deletePermisoDto);
   }

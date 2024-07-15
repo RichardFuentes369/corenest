@@ -33,7 +33,7 @@ export class ModulosService {
     return metadata.columns.map((column) => column.propertyName);
   }
 
-  async findAll(paginationDto: PaginationDto) {
+  async findAllPaginado(paginationDto: PaginationDto) {
 
     const { limit, page, field = 'id' , order = 'Asc' } = paginationDto
     
@@ -77,6 +77,10 @@ export class ModulosService {
         'field': field
       }
     }]
+  }
+
+  async findAll() {
+    return await this.moduloRepository.find()
   }
 
   async update(id: number, updateModuloDto: UpdateModuloDto) {

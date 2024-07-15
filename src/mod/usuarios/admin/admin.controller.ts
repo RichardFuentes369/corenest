@@ -13,7 +13,7 @@ export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
   @ApiTags('admin')
-  @Post()
+  @Post('crear-admininistrador')
   create(@Body() createAdminDto: CreateAdminDto) {
     return this.adminService.create(createAdminDto);
   }
@@ -26,19 +26,19 @@ export class AdminController {
   }
 
   @ApiTags('admin')
-  @Get(':id')
+  @Get('obtener-administrador/:id')
   findOne(@Param('id') id: string) {
     return this.adminService.findOne(+id);
   }
 
   @ApiTags('admin')
-  @Patch(':id')
+  @Patch('editar-administrador/:id')
   update(@Param('id') id: string, @Body() updateAdminDto: UpdateAdminDto) {
     return this.adminService.update(+id, updateAdminDto);
   }
 
   @ApiTags('admin')
-  @Delete(':id')
+  @Delete('eliminar-admininistrador/:id')
   remove(@Param('id') id: string) {
     return this.adminService.remove(+id);
   }
