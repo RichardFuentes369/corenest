@@ -10,4 +10,8 @@ export class UpdateModuloDto extends PartialType(CreateModuloDto) {
   @IsString()
   // @Transform(({value}) => value.trim())
   readonly icono;
+
+  @IsString()
+  // @Transform(({value}) => value.trim())
+  readonly url;
 }

@@ -13,26 +13,26 @@ export class ModulosController {
   constructor(private readonly modulosService: ModulosService) {}
 
   @ApiTags('modulos')
-  @Post()
+  @Post('crear-modulo')
   create(@Body() createModuloDto: CreateModuloDto) {
     return this.modulosService.create(createModuloDto);
   }
 
   @ApiTags('modulos')
-  @Get()
+  @Get('')
   // @UseGuards(AdminGuard)
   findAll(@Query() paginationDto: PaginationDto) {
     return this.modulosService.findAll(paginationDto);
   }
 
   @ApiTags('modulos')
-  @Patch(':id')
+  @Patch('editar-modulo/:id')
   update(@Param('id') id: string, @Body() updateModuloDto: UpdateModuloDto) {
     return this.modulosService.update(+id, updateModuloDto);
   }
 
   @ApiTags('modulos')
-  @Delete(':id')
+  @Delete('eliminar-modulo/:id')
   remove(@Param('id') id: string) {
     return this.modulosService.remove(+id);
   }

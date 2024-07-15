@@ -80,10 +80,20 @@ export class ModulosService {
   }
 
   async update(id: number, updateModuloDto: UpdateModuloDto) {
+
     const property = await this.moduloRepository.findOne({
       where: { id }
     });
+
+    if(updateModuloDto.nombre){
+      const encontrarModulo = await this.findNameModule(updateModuloDto.nombre)
+      if(encontrarModulo && encontrarModulo.id != id) throw new NotFoundException(`
+        Este nombre ${updateModuloDto.nombre} ya esta registrado
+      `)
+    }
     
+
+
     return this.moduloRepository.save({
       ...property, // existing fields
       ...updateModuloDto // updated fields
