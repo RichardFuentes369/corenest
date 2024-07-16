@@ -48,7 +48,8 @@ export class PermisosService {
       where: { 
         userId: idUsuario,
         tipo: 1
-      }
+      },
+      relations: ["modulo"]
     })
   }
 
