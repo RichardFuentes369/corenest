@@ -59,13 +59,18 @@ export class UserService {
       })
     }
 
+    const totalRecords = async () => {
+      return await this.userRepository.count()
+    }
+
     return [{
       'result': await peticion(skipeReal),
       'pagination': {
         'page': page,
         'perPage': limit,
         'previou': (page == 1) ? null : page-1,
-        'next': (await peticion(page*limit)).length == 0 ? null : page+1 
+        'next': (await peticion(page*limit)).length == 0 ? null : page+1 ,
+        'totalRecord': await totalRecords()
       },
       'order':{
         'order': order,
