@@ -16,4 +16,4 @@ import { PermisosModulosController } from './modulos.controller';
     PermisoModulosService
   ]
 })
-export class ModulosModule {}
+export class ModulosPermisosModule {}

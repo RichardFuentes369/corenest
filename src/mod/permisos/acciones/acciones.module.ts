@@ -16,4 +16,4 @@ import { AccionesController } from './acciones.controller';
     PermisoAccionesService
   ]
 })
-export class AccionesModule {}
+export class AccionesPermisosModule {}

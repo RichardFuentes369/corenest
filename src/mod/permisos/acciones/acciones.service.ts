@@ -16,11 +16,11 @@ export class PermisoAccionesService {
   ) {}
 
   async findPermiso(nombre: string, userId: number, moduloId: number, tipo: number): Promise<AccionesModule>{
-    return this.moduloRepository.createQueryBuilder("mod_permisos_modulo")
-    .where("mod_permisos_modulo.nombre = :nombre", { nombre })
-    .andWhere("mod_permisos_modulo.userId = :userId", { userId })
-    .andWhere("mod_usuarios_permisos.moduloId = :moduloId", { moduloId })
-    .andWhere("mod_permisos_modulo.tipo = :tipo", { tipo })
+    return this.moduloRepository.createQueryBuilder("mod_permisos_acciones")
+    .where("mod_permisos_acciones.nombre = :nombre", { nombre })
+    .andWhere("mod_permisos_acciones.userId = :userId", { userId })
+    .andWhere("mod_permisos_acciones.moduloId = :moduloId", { moduloId })
+    .andWhere("mod_permisos_acciones.tipo = :tipo", { tipo })
     .getOne();
   }
 

@@ -11,8 +11,7 @@ import { AppService } from './app.service';
 import { GlobalModule } from './global/global.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { AdminModule, AuthadminModule, UserModule, AuthuserModule, ModulosModule } from './mod/index'
-import { AccionesModule } from './mod/permisos/acciones/acciones.module';
+import { AdminModule, AuthadminModule, UserModule, AuthuserModule, ModulosModule, ModulosPermisosModule, AccionesPermisosModule } from './mod/index'
 
 @Module({
   imports: [
@@ -35,7 +34,8 @@ import { AccionesModule } from './mod/permisos/acciones/acciones.module';
     UserModule,
     AuthuserModule,
     ModulosModule,
-    AccionesModule,
+    ModulosPermisosModule,
+    AccionesPermisosModule
   ],
   controllers: [AppController],
   providers: [AppService],

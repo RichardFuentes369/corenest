@@ -7,24 +7,24 @@ import { DeleteAccionesDto } from './dto/delete-acciones.dto';
 import { PaginationDto } from '../../../global/dto/pagination.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@Controller('acciones')
+@Controller('permisos-acciones')
 export class AccionesController {
   constructor(private readonly accionesModuloService: PermisoAccionesService) {}
 
-  @ApiTags('permisos')
+  @ApiTags('permisos-acciones')
   @Get('mis-permisos/:idUser/por-modulo/:idModulo/por-tipo/:idTipo/permisos')
   // @UseGuards(AdminGuard)
   permisosOpcionesModulo(@Param('idUser') idUser: string, @Param('idModulo') idModulo: string, @Param('idTipo') idTipo: string) {
     return this.accionesModuloService.permisos(+idUser, +idModulo, +idTipo);
   }
 
-  @ApiTags('permisos')
+  @ApiTags('permisos-acciones')
   @Post('asignar-permiso')
   create(@Body() createAccionesPermisoDto: CreateAccionesDto) {
     return this.accionesModuloService.create(createAccionesPermisoDto);
   }
 
-  @ApiTags('permisos')
+  @ApiTags('permisos-acciones')
   @Delete('eliminar-permiso')
   remove(@Body() deleteAccionesPermisoDto: DeleteAccionesDto) {
     return this.accionesModuloService.remove(deleteAccionesPermisoDto);
