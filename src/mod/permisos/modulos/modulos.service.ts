@@ -17,35 +17,46 @@ export class PermisoModulosService {
 
 
   async permisos(idUsuario: number, idModulo: number, tipo: number, idSubmodulo: number): Promise<PermisosModulos[]>{
-    let condicion = null
-    if (idSubmodulo !== 0) {
-      condicion = idSubmodulo;
-    } else {
-      condicion = null;
+
+    if(idModulo == 0 && tipo == 1){
+      return this.moduloRepository.find({
+        where: { 
+          userId: idUsuario,
+          tipo: tipo,
+          submoduloId: null,
+        },
+        relations: ["modulo"],
+        select: {
+          modulo:{
+                nombre: true,
+                url: true,
+          }
+        }
+      })
     }
 
-    return this.moduloRepository.find({
-      where: { 
-        userId: idUsuario,
-        moduloId: idModulo,
-        tipo: tipo,
-        submoduloId: condicion,
-      }
-    })
+    if(idModulo != 0 && tipo == 2 && idSubmodulo == 0){
+      return this.moduloRepository.find({
+        where: { 
+          userId: idUsuario,
+          moduloId: idModulo,
+          tipo: tipo,
+          submoduloId: null,
+        }
+      })
+    }
 
-    // return this.moduloRepository.find({
-    //     where: { 
-    //       // userId: idUsuario,
-    //       tipo: 1
-    //     },
-    //     relations: ["modulo"],
-    //     select: {
-    //       modulo:{
-    //             nombre: true,
-    //             url: true,
-    //       }
-    //     }
-    //   })
+    if(idModulo != 0 && tipo == 3 && idSubmodulo != 0){
+      return this.moduloRepository.find({
+        where: { 
+          userId: idUsuario,
+          moduloId: idModulo,
+          tipo: tipo,
+          submoduloId: idSubmodulo,
+        }
+      })
+    }
+    
   }
 
   async findPermiso(
