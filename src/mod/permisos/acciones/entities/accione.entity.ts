@@ -1,9 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Modulo } from '../../modulos/entities/modulos.entity';
+import { Modulo } from '../../../modulos/entities/modulos.entity';
 import { Admin } from 'src/mod/usuarios/admin/entities/admin.entity';
 
-@Entity('mod_usuarios_permisos')
-export class Permisos {
+@Entity('mod_permisos_acciones')
+export class AccionesModule {
   @PrimaryGeneratedColumn('increment')
   id: number;
   

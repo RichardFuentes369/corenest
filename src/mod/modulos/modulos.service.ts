@@ -4,7 +4,7 @@ import { UpdateModuloDto } from './dto/update-modulo.dto';
 
 import { Repository } from 'typeorm';
 import { Modulo } from './entities/modulos.entity';
-import { PaginationDto } from '../../../global/dto/pagination.dto';
+import { PaginationDto } from '../../global/dto/pagination.dto';
 
 @Injectable()
 export class ModulosService {

@@ -4,5 +4,5 @@ export { UserModule } from './usuarios/user/user.module';
 export { AuthadminModule } from './auth/admin/auth.module'
 export { AuthuserModule } from './auth/user/auth.module'
 
-export { ModulosModule } from './usuarios/modulos/modulos.module'
-export { PermisosModule } from './usuarios/permisos/permisos.module'
+export { ModulosModule } from './modulos/modulos.module'
+

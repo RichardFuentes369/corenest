@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
-@Entity('mod_usuarios_modulos')
+@Entity('mod_modulos')
 export class Modulo {
   @PrimaryGeneratedColumn('increment')
   id: number;

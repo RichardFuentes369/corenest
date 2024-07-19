@@ -1,6 +1,6 @@
 import { IsInt, IsNumber, IsString } from "class-validator";
 
-export class CreatePermisoDto {
+export class DeleteAccionesDto  {
 
   @IsString()
   // @Transform(({value}) => value.trim())
@@ -9,6 +9,7 @@ export class CreatePermisoDto {
   @IsInt()
   // @Transform(({value}) => value.trim())
   readonly tipo;
+
 
   @IsInt()
   // @Transform(({value}) => value.trim())

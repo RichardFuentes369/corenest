@@ -3,7 +3,7 @@ import { ModulosService } from './modulos.service';
 import { CreateModuloDto } from './dto/create-modulo.dto';
 import { UpdateModuloDto } from './dto/update-modulo.dto';
 
-import { PaginationDto } from '../../../global/dto/pagination.dto';
+import { PaginationDto } from '../../global/dto/pagination.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 // import { AuthGuard } from '../../mod-auth/authadmin/auth.guard';
