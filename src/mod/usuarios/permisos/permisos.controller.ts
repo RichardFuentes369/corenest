@@ -14,7 +14,7 @@ export class PermisosController {
   constructor(private readonly permisosService: PermisosService) {}
 
   @ApiTags('permisos')
-  @Get('mis-permisos/:idUser/por-modulo/:idModulo/por-tipo/:idTipo')
+  @Get('mis-permisos/:idUser/por-modulo/:idModulo/por-tipo/:idTipo/permisos')
   // @UseGuards(AdminGuard)
   permisosOpcionesModulo(@Param('idUser') idUser: string, @Param('idModulo') idModulo: string, @Param('idTipo') idTipo: string) {
     return this.permisosService.permisos(+idUser, +idModulo, +idTipo);

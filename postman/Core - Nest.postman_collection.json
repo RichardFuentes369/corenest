@@ -527,7 +527,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/permisos/mis-permisos/1/por-modulo/0/por-tipo/1",
+									"raw": "localhost:3000/api/permisos/mis-permisos/1/por-modulo/0/por-tipo/1/permisos",
 									"host": [
 										"localhost"
 									],
@@ -540,7 +540,8 @@
 										"por-modulo",
 										"0",
 										"por-tipo",
-										"1"
+										"1",
+										"permisos"
 									],
 									"query": [
 										{
