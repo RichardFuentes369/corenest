@@ -1,4 +1,4 @@
-import { IsInt, IsNumber, IsString } from "class-validator";
+import { IsInt, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class DeleteModulosDto  {
 
@@ -10,7 +10,6 @@ export class DeleteModulosDto  {
   // @Transform(({value}) => value.trim())
   readonly tipo;
 
-
   @IsInt()
   // @Transform(({value}) => value.trim())
   readonly userId;
@@ -18,5 +17,9 @@ export class DeleteModulosDto  {
   @IsInt()
   // @Transform(({value}) => value.trim())
   readonly moduloId;
+
+  @IsOptional()
+  // @Transform(({value}) => value.trim())
+  readonly submoduloId: number | null;
 
 }

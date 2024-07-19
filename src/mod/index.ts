@@ -6,5 +6,4 @@ export { AuthuserModule } from './auth/user/auth.module'
 
 export { ModulosModule } from './modulos/modulos.module'
 export { ModulosPermisosModule } from './permisos/modulos/modulos.module'
-export { AccionesPermisosModule } from './permisos/acciones/acciones.module'
 

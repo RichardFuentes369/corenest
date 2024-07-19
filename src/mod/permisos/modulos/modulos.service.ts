@@ -15,61 +15,91 @@ export class PermisoModulosService {
     private moduloRepository: Repository<PermisosModulos>,
   ) {}
 
-  async findPermiso(nombre: string, userId: number, moduloId: number, tipo: number): Promise<PermisosModulos>{
-    return this.moduloRepository.createQueryBuilder("mod_permisos_modulos")
+
+  async permisos(idUsuario: number, idModulo: number, tipo: number, idSubmodulo: number): Promise<PermisosModulos[]>{
+    let condicion = null
+    if (idSubmodulo !== 0) {
+      condicion = idSubmodulo;
+    } else {
+      condicion = null;
+    }
+
+    return this.moduloRepository.find({
+      where: { 
+        userId: idUsuario,
+        moduloId: idModulo,
+        tipo: tipo,
+        submoduloId: condicion,
+      }
+    })
+
+    // return this.moduloRepository.find({
+    //     where: { 
+    //       // userId: idUsuario,
+    //       tipo: 1
+    //     },
+    //     relations: ["modulo"],
+    //     select: {
+    //       modulo:{
+    //             nombre: true,
+    //             url: true,
+    //       }
+    //     }
+    //   })
+  }
+
+  async findPermiso(
+    nombre: string, 
+    idUsuario: number, 
+    idModulo: number, 
+    tipo: number, 
+    idSubmodulo: number
+  ): Promise<PermisosModulos>{
+    const consulta =  this.moduloRepository.createQueryBuilder("mod_permisos_modulos")
     .where("mod_permisos_modulos.nombre = :nombre", { nombre })
-    .andWhere("mod_permisos_modulos.userId = :userId", { userId })
-    .andWhere("mod_permisos_modulos.moduloId = :moduloId", { moduloId })
-    .andWhere("mod_permisos_modulos.tipo = :tipo", { tipo })
-    .getOne();
+    .andWhere("mod_permisos_modulos.userId = :idUsuario", { idUsuario })
+    .andWhere("mod_permisos_modulos.moduloId = :idModulo", { idModulo })
+    .andWhere("mod_permisos_modulos.tipo = :tipo", { tipo });
+
+    if(idSubmodulo!=null){
+      consulta.andWhere("mod_permisos_modulos.submoduloId = :idSubmodulo", { idSubmodulo });
+    }else{
+      consulta.andWhere("mod_permisos_modulos.submoduloId IS NULL");
+    }
+
+    return consulta.getOne();
   }
 
   async create(createPermisoModuloDto: CreateModulosDto) {
-    const encontrarPermiso = await this.findPermiso(createPermisoModuloDto.nombre, createPermisoModuloDto.userId, createPermisoModuloDto.moduloId, createPermisoModuloDto.tipo)
+    const encontrarPermiso = await this.findPermiso(
+      createPermisoModuloDto.nombre, 
+      createPermisoModuloDto.userId, 
+      createPermisoModuloDto.moduloId, 
+      createPermisoModuloDto.tipo,
+      createPermisoModuloDto.submoduloId
+    )
 
     if(encontrarPermiso) throw new NotFoundException(`
       El permiso con ya fue asignado
     `)
-    
+
     return this.moduloRepository.save(createPermisoModuloDto);
   }
 
   async remove(deletePermismoModuloDto: DeleteModulosDto) {
-    const encontrarPermiso = await this.findPermiso(deletePermismoModuloDto.nombre, deletePermismoModuloDto.userId, deletePermismoModuloDto.moduloId, deletePermismoModuloDto.tipo)
+    const encontrarPermiso = await this.findPermiso(
+      deletePermismoModuloDto.nombre, 
+      deletePermismoModuloDto.userId, 
+      deletePermismoModuloDto.moduloId, 
+      deletePermismoModuloDto.tipo,
+      deletePermismoModuloDto.submoduloId
+    )
 
     if(encontrarPermiso) {
       return this.moduloRepository.delete(encontrarPermiso.id);
     }else{
       throw new NotFoundException(`No se encontro ningun permiso`)
     }
-  }
-
-  async permisos(idUsuario: number, module: number, tipo: number): Promise<PermisosModulos[]>{
-
-    if(module == 0){
-      return this.moduloRepository.find({
-        where: { 
-          userId: idUsuario,
-          tipo: 1
-        },
-        relations: ["modulo"],
-        select: {
-          modulo:{
-                nombre: true,
-                url: true,
-          }
-        }
-      })
-    }else{
-      return this.moduloRepository.find({
-        where: { 
-          userId: idUsuario,
-          moduloId: module,
-          tipo: tipo
-        }
-      })
-    }
-
   }
 
 }
