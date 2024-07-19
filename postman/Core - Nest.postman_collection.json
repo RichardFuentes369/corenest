@@ -87,7 +87,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Usuario1\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user1@gmail.com\",\r\n    \"isActive\": true\r\n}",
+									"raw": "{\r\n    \"firstName\": \"Usuario11\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user11@gmail.com\",\r\n    \"isActive\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -145,7 +145,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/user/editar-usuario/2",
+									"raw": "localhost:3000/api/user/editar-usuario/12",
 									"host": [
 										"localhost"
 									],
@@ -154,7 +154,7 @@
 										"api",
 										"user",
 										"editar-usuario",
-										"2"
+										"12"
 									]
 								}
 							},
@@ -308,247 +308,6 @@
 										"admin",
 										"editar-administrador",
 										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "modulos",
-					"item": [
-						{
-							"name": "getModulosPaginada",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/modulos?page=1&limit=4&field=id&order=asc",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "4"
-										},
-										{
-											"key": "field",
-											"value": "id"
-										},
-										{
-											"key": "order",
-											"value": "asc"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getModulos",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/modulos/listar-modulos/",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"listar-modulos",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "postModulo",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"Urgencias\",\r\n    \"icono\": \"fa-emergency\",\r\n    \"url\": \"mod-urgencias\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/modulos/crear-modulo/",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"crear-modulo",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "deleteModulo",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/modulos/eliminar-modulo/1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"eliminar-modulo",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "putModulo",
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"Urgencias\",\r\n    \"icono\": \"ico-emergency\",\r\n    \"url\": \"mod_urgencias\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/modulos/editar-modulo/11",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"editar-modulo",
-										"11"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "permisos",
-					"item": [
-						{
-							"name": "asignarPermiso",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"usuarios_administradores\",\r\n    \"userId\": 1,\r\n    \"moduloId\": 2,\r\n    \"tipo\": 2\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/permisos/asignar-permiso/",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"permisos",
-										"asignar-permiso",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "eliminarPermiso",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"galeria_eliminar\",\r\n    \"userId\": 1,\r\n    \"moduloId\": 1,\r\n    \"tipo\": 2\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/eliminar-permiso/permisos",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"eliminar-permiso",
-										"permisos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "misPermisos",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/permisos/mis-permisos/1/por-modulo/0/por-tipo/1/permisos",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"permisos",
-										"mis-permisos",
-										"1",
-										"por-modulo",
-										"0",
-										"por-tipo",
-										"1",
-										"permisos"
-									],
-									"query": [
-										{
-											"key": "idUser",
-											"value": "1",
-											"disabled": true
-										}
 									]
 								}
 							},
@@ -759,6 +518,256 @@
 						"header": []
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "ModModulos",
+			"item": [
+				{
+					"name": "getModulosPaginada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/modulos?page=1&limit=4&field=id&order=asc",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"modulos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "4"
+								},
+								{
+									"key": "field",
+									"value": "id"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getModulos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/modulos/listar-modulos/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"modulos",
+								"listar-modulos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postModulo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Galeria\",\r\n    \"icono\": \"fa-gallery\",\r\n    \"url\": \"mod-galeria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/modulos/crear-modulo/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"modulos",
+								"crear-modulo",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteModulo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/modulos/eliminar-modulo/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"modulos",
+								"eliminar-modulo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putModulo",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Urgencias\",\r\n    \"icono\": \"ico-emergency\",\r\n    \"url\": \"mod_urgencias\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/modulos/editar-modulo/11",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"modulos",
+								"editar-modulo",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ModPermisos",
+			"item": [
+				{
+					"name": "modulos",
+					"item": [
+						{
+							"name": "asignarPermiso",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"publicaciones_crear\",\r\n    \"subpermiso\": \"\",\r\n    \"userId\": 1,\r\n    \"moduloId\": 2,\r\n    \"tipo\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/permisos/asignar-permiso/",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"permisos",
+										"asignar-permiso",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminarPermiso",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"galeria_eliminar\",\r\n    \"userId\": 1,\r\n    \"moduloId\": 1,\r\n    \"tipo\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/eliminar-permiso/permisos",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"eliminar-permiso",
+										"permisos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "misPermisos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/permisos/mis-permisos/1/por-modulo/0/por-tipo/1/permisos",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"permisos",
+										"mis-permisos",
+										"1",
+										"por-modulo",
+										"0",
+										"por-tipo",
+										"1",
+										"permisos"
+									],
+									"query": [
+										{
+											"key": "idUser",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "acciones",
+					"item": []
 				}
 			]
 		}
