@@ -43,35 +43,33 @@ export class PermisosService {
     }
   }
 
-  async permisosModulo(idUsuario: number): Promise<Permisos[]>{
-    return this.moduloRepository.find({
-      where: { 
-        userId: idUsuario,
-        tipo: 1
-      },
-      relations: ["modulo"]
-    })
-  }
+  async permisos(idUsuario: number, module: number, tipo: number): Promise<Permisos[]>{
 
-  async permisosSobreModulo(idUsuario: number, module: number): Promise<Permisos[]>{
-    return this.moduloRepository.find({
-      where: { 
-        userId: idUsuario,
-        moduloId: module,
-        tipo: 2
-      }
-    })
+    if(module == 0){
+      return this.moduloRepository.find({
+        where: { 
+          userId: idUsuario,
+          tipo: 1
+        },
+        relations: ["modulo"],
+        select: {
+          modulo:{
+                nombre: true,
+                url: true,
+          }
+        }
+      })
+    }else{
+      return this.moduloRepository.find({
+        where: { 
+          userId: idUsuario,
+          moduloId: module,
+          tipo: tipo
+        }
+      })
+    }
+
   }
   
-  async findOne(idUsuario: number, idModulo:number, nombrePermiso: string): Promise<Permisos[]>{
-    return this.moduloRepository.find({
-      where: { 
-        userId: idUsuario,
-        moduloId: idModulo,
-        nombre: nombrePermiso
-      }
-    })
-  }
-
 }
   

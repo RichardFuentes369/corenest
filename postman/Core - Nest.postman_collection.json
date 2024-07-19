@@ -469,7 +469,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"galeria_eliminar\",\r\n    \"userId\": 1,\r\n    \"moduloId\": 1,\r\n    \"tipo\": 2\r\n}",
+									"raw": "{\r\n    \"nombre\": \"usuarios_administradores\",\r\n    \"userId\": 1,\r\n    \"moduloId\": 2,\r\n    \"tipo\": 2\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -522,12 +522,12 @@
 							"response": []
 						},
 						{
-							"name": "misPermisosModulo",
+							"name": "misPermisos",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/permisos/mis-permisos/1/por-modulo/1",
+									"raw": "localhost:3000/api/permisos/mis-permisos/1/por-modulo/0/por-tipo/1",
 									"host": [
 										"localhost"
 									],
@@ -538,60 +538,9 @@
 										"mis-permisos",
 										"1",
 										"por-modulo",
+										"0",
+										"por-tipo",
 										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "misPermisos",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/permisos/mis-permisos/1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"permisos",
-										"mis-permisos",
-										"1"
-									],
-									"query": [
-										{
-											"key": "idUser",
-											"value": "1",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "tengoPermisoA",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/permisos/yo/1/tengo-permiso-a/1/para/usuarios",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"permisos",
-										"yo",
-										"1",
-										"tengo-permiso-a",
-										"1",
-										"para",
-										"usuarios"
 									],
 									"query": [
 										{
