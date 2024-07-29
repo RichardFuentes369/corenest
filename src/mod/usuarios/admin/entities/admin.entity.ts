@@ -1,4 +1,4 @@
-import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
+// import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity('mod_usuarios_admin')
@@ -21,6 +21,6 @@ export class Admin {
   @Column({ default: true })
   isActive: boolean;
 
-  @OneToMany(() => PermisosModulos, (permiso) => permiso.userId)
-  permiso: PermisosModulos
+  // @OneToMany(() => PermisosModulos, (permiso) => permiso.userId)
+  // permiso: PermisosModulos
 }

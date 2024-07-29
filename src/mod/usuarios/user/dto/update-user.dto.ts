@@ -11,7 +11,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     // @Transform(({value}) => value.trim())
     readonly lastName;
 
-    @IsString()
+    @IsBoolean()
     // @Transform(({value}) => value.trim())
     readonly isActive;
 }

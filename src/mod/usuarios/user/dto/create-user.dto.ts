@@ -19,7 +19,7 @@ export class CreateUserDto {
     // @Transform(({value}) => value.trim())
     readonly password;
 
-    @IsString()
+    @IsBoolean()
     // @Transform(({value}) => value.trim())
     readonly isActive;
     
