@@ -1,5 +1,5 @@
 import { Admin } from '../../../usuarios/admin/entities/admin.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity('mod_permisos_modulo_asignacion')
 export class Asignacion {
@@ -9,9 +9,17 @@ export class Asignacion {
   @Column({ nullable: true })
   nombre_permiso: string;
 
-  @ManyToOne(() => Asignacion, modulo => modulo.id, { nullable: true })
-  modulo_padre: number;
+  @Column({ nullable: true })
+  modulo_padre_id: number;
 
-  @ManyToOne(() => Admin, admin => admin.id)
-  usuario: number;
+  @Column({ nullable: true })
+  user_id: number;
+  
+  @ManyToOne(() => Asignacion, { nullable: true })
+  @JoinColumn({ name: 'modulo_padre_id' })
+  modulo_padre: Asignacion;
+
+  @ManyToOne(() => Admin, { nullable: true })
+  @JoinColumn({ name: 'user_id' })
+  user: Admin;
 }

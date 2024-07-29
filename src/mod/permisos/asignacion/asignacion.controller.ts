@@ -8,33 +8,16 @@ import { ApiTags } from '@nestjs/swagger';
 export class AsignacionController {
   constructor(private readonly asignacionService: AsignacionService) {}
 
-  @ApiTags('permisos_asignaciones')
-  @Post()
+  @ApiTags('asignacion_permiso')
+  @Get('mis-permisos/:idUser')
+  findAll(@Param('idUser') idUser: string) {
+    return this.asignacionService.findAll(+idUser);
+  }
+
+  @ApiTags('asignacion_permiso')
+  @Post('asignacion-permiso')
   create(@Body() createAsignacionDto: CreateAsignacionDto) {
     return this.asignacionService.create(createAsignacionDto);
   }
 
-  @ApiTags('permisos_asignaciones')
-  @Get()
-  findAll() {
-    return this.asignacionService.findAll();
-  }
-
-  @ApiTags('permisos_asignaciones')
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.asignacionService.findOne(+id);
-  }
-
-  @ApiTags('permisos_asignaciones')
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAsignacionDto: UpdateAsignacionDto) {
-    return this.asignacionService.update(+id, updateAsignacionDto);
-  }
-
-  @ApiTags('permisos_asignaciones')
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.asignacionService.remove(+id);
-  }
 }

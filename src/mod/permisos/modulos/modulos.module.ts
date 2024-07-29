@@ -9,7 +9,8 @@ import { GlobalModule } from 'src/global/global.module';
   controllers: [ModulosController],
   providers: [
     ...moduloProviders,
-    ModulosService],
+    ModulosService
+  ],
   exports: [ModulosService]
 })
 export class ModulosModule {}

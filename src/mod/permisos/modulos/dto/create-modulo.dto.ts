@@ -10,4 +10,5 @@ export class CreateModuloDto {
   @IsString()
   // @Transform(({value}) => value.trim())
   readonly nombre_permiso;
+  
 }
