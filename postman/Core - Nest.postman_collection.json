@@ -633,7 +633,7 @@
 							"response": []
 						},
 						{
-							"name": "listar_mis_permisos",
+							"name": "listar_mis_permisos_menu",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -693,6 +693,27 @@
 										"buscar-permiso",
 										"1",
 										"administradores",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lista_mis_permisos_modulo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/asignacion/mis-permisos/1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"asignacion",
+										"mis-permisos",
 										"1"
 									]
 								}
