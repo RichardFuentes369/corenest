@@ -79,4 +79,11 @@ export class AsignacionService {
     
   }
 
+  async delete(moduloId: number, nombrePermiso: string, userId: number){
+
+    let idRegistro = (await this.findPermiso(moduloId, nombrePermiso, userId)).id
+    return this.moduloRepository.delete(idRegistro);
+    
+  }
+  
 }

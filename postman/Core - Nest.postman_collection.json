@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c1e94cbd-6f64-4ed2-9cd1-1ef5e011622a",
+		"_postman_id": "5688457f-9c22-40fb-9b1c-253ce2819217",
 		"name": "Core - Nest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "7819792"
@@ -87,7 +87,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Usuario11\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user11@gmail.com\",\r\n    \"isActive\": true\r\n}",
+									"raw": "{\r\n    \"firstName\": \"Usuario4\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user4@gmail.com\",\r\n    \"isActive\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -115,7 +115,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/user/eliminar-usuario/3",
+									"raw": "localhost:3000/api/user/eliminar-usuario/4",
 									"host": [
 										"localhost"
 									],
@@ -124,7 +124,7 @@
 										"api",
 										"user",
 										"eliminar-usuario",
-										"3"
+										"4"
 									]
 								}
 							},
@@ -145,7 +145,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/user/editar-usuario/12",
+									"raw": "localhost:3000/api/user/editar-usuario/4",
 									"host": [
 										"localhost"
 									],
@@ -154,7 +154,7 @@
 										"api",
 										"user",
 										"editar-usuario",
-										"12"
+										"4"
 									]
 								}
 							},
@@ -240,7 +240,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"AdminName1\",\r\n    \"lastName\": \"AdminLastname1\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"admin1@correo.com\",\r\n    \"isActive\": true\r\n}",
+									"raw": "{\r\n    \"firstName\": \"AdminName2\",\r\n    \"lastName\": \"AdminLastname2\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"admin2@correo.com\",\r\n    \"isActive\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -290,7 +290,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Admin1\",\r\n    \"lastName\": \"Principal\",\r\n    \"isActive\": true\r\n}",
+									"raw": "{\r\n    \"firstName\": \"Admin121\",\r\n    \"lastName\": \"Principal\",\r\n    \"isActive\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -298,7 +298,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/admin/editar-administrador/1",
+									"raw": "localhost:3000/api/admin/editar-administrador/4",
 									"host": [
 										"localhost"
 									],
@@ -307,7 +307,7 @@
 										"api",
 										"admin",
 										"editar-administrador",
-										"1"
+										"4"
 									]
 								}
 							},
@@ -501,259 +501,205 @@
 			"description": "Logica autenticacion\n\nadministrador  \nusuario final\n\nrefrescar token"
 		},
 		{
-			"name": "ModPublicaciones",
-			"item": [
-				{
-					"name": "Tags",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Publicacion",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "ModModulos",
-			"item": [
-				{
-					"name": "getModulosPaginada",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/api/modulos?page=1&limit=4&field=id&order=asc",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"modulos"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "4"
-								},
-								{
-									"key": "field",
-									"value": "id"
-								},
-								{
-									"key": "order",
-									"value": "asc"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getModulos",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/api/modulos/listar-modulos/",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"modulos",
-								"listar-modulos",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "postModulo",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Permisos\",\r\n    \"icono\": \"fa-post\",\r\n    \"url\": \"mod-permisos\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/api/modulos/crear-modulo/",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"modulos",
-								"crear-modulo",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteModulo",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/api/modulos/eliminar-modulo/1",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"modulos",
-								"eliminar-modulo",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "putModulo",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Urgencias\",\r\n    \"icono\": \"ico-emergency\",\r\n    \"url\": \"mod_urgencias\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/api/modulos/editar-modulo/11",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"modulos",
-								"editar-modulo",
-								"11"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "ModPermisos",
 			"item": [
 				{
-					"name": "asignarPermiso",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"tipo\": 3,\r\n    \"nombre\": \"activar_desactivar\",\r\n    \"userId\": 1,\r\n    \"moduloId\": 1,\r\n    \"submoduloId\": 2\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "modulos",
+					"item": [
+						{
+							"name": "listar_modulos_permisos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/modulos",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"modulos"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:3000/api/permisos-modulos/asignar-permiso/",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"permisos-modulos",
-								"asignar-permiso",
-								""
-							]
+						{
+							"name": "crear_modulos_permisos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"modulo_padre_id\": 4,\r\n    \"nombre_permiso\": \"activar_desactivar\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/modulos/crear-permiso-modulo",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"modulos",
+										"crear-permiso-modulo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar_modulos_permisos",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/modulos/eliminar-permiso-modulo/1/editorial23",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"modulos",
+										"eliminar-permiso-modulo",
+										"1",
+										"editorial23"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscar_modulo_permiso",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/modulos/buscar-permiso/1/administradores",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"modulos",
+										"buscar-permiso",
+										"1",
+										"administradores"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "eliminarPermiso",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"tipo\": 2,\r\n    \"nombre\": \"publicaciones_perdidas\",\r\n    \"userId\": 1,\r\n    \"moduloId\": 2,\r\n    \"submoduloId\": null\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "asignaciones",
+					"item": [
+						{
+							"name": "crear_asignacion_permisos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"modulo_padre_id\": 17,\r\n    \"nombre_permiso\": \"melasuda\",\r\n    \"user_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/asignacion/asignacion-permiso",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"asignacion",
+										"asignacion-permiso"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:3000/api/permisos-modulos/eliminar-permiso",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"permisos-modulos",
-								"eliminar-permiso"
-							]
+						{
+							"name": "listar_mis_permisos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/asignacion/mis-permisos/1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"asignacion",
+										"mis-permisos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar_permiso",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/asignacion/eliminar-permiso-asignado/17/melasuda/2",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"asignacion",
+										"eliminar-permiso-asignado",
+										"17",
+										"melasuda",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscar_permiso",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/asignacion/buscar-permiso/1/administradores/1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"asignacion",
+										"buscar-permiso",
+										"1",
+										"administradores",
+										"1"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "misPermisos",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/api/permisos-modulos/mis-permisos/1/por-modulo/1/por-tipo/3/por-submodulo/2/permisos",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"permisos-modulos",
-								"mis-permisos",
-								"1",
-								"por-modulo",
-								"1",
-								"por-tipo",
-								"3",
-								"por-submodulo",
-								"2",
-								"permisos"
-							]
-						}
-					},
-					"response": []
+					]
 				}
 			]
 		}
