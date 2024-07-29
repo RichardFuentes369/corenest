@@ -59,6 +59,17 @@ export class PermisoModulosService {
     
   }
 
+  async idPermiso(nombre: string, idUsuario: number): Promise<PermisosModulos[]>{
+
+    return this.moduloRepository.find({
+      where: { 
+        userId: idUsuario,
+        nombre: nombre
+      }
+    })
+    
+  }
+
   async findPermiso(
     nombre: string, 
     idUsuario: number, 

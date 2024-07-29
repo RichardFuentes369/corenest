@@ -24,6 +24,16 @@ export class PermisosModulosController {
   }
 
   @ApiTags('permisos-modulos')
+  @Get('mis-permisos/:nombrePermiso/:idUsuario')
+  // @UseGuards(AdminGuard)
+  idPermiso(
+    @Param('nombrePermiso') nombrePermiso: string, 
+    @Param('idUsuario') idUsuario: string,
+  ) {
+    return this.permisoModuloService.idPermiso(nombrePermiso, +idUsuario);
+  }
+
+  @ApiTags('permisos-modulos')
   @Post('asignar-permiso')
   create(@Body() createModulosPermisoDto: CreateModulosDto) {
     return this.permisoModuloService.create(createModulosPermisoDto);
