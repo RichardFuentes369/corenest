@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { ModulosService } from './modulos.service'
 import { CreateModuloDto } from './dto/create-modulo.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { PaginationDto } from 'src/global/dto/pagination.dto';
 
 @Controller('modulos')
 export class ModulosController {
@@ -11,6 +12,13 @@ export class ModulosController {
   @Get()
   findAll() {
     return this.modulosService.findAll();
+  }
+  
+  @ApiTags('permisos_modulos')
+  @Get('lista/:padreId')
+  // @UseGuards(AdminGuard)
+  findPaginada(@Param('padreId') padreId: string, @Query() paginationDto: PaginationDto) {
+    return this.modulosService.findPaginada(+padreId, paginationDto);
   }
 
   @ApiTags('permisos_modulos')
