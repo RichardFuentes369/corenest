@@ -3,9 +3,9 @@ import { AuthadminService } from './auth.service';
 import { AuthadminController } from './auth.controller';
 
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from '../../../guards/constante';
+import { jwtConstants } from '@guard/constante';
 
-import { AdminModule } from '../../usuarios/admin/admin.module';
+import { AdminModule } from '@module/usuarios/admin/admin.module';
 
 @Module({
   imports: [

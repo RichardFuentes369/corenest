@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AsignacionService } from './asignacion.service';
 import { AsignacionController } from './asignacion.controller';
 import { asignacionProviders } from './entities/asignacion.provider';
-import { GlobalModule } from 'src/global/global.module';
+import { GlobalModule } from '@global/global.module';
 
 @Module({
   imports: [GlobalModule],

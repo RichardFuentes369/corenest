@@ -3,7 +3,7 @@ import { CreateModuloDto } from './dto/create-modulo.dto';
 
 import { IsNull, Repository } from 'typeorm';
 import { Modulo } from './entities/modulo.entity';
-import { PaginationDto } from 'src/global/dto/pagination.dto';
+import { PaginationDto } from '@global/dto/pagination.dto';
 
 @Injectable()
 export class ModulosService {

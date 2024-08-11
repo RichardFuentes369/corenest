@@ -1,4 +1,4 @@
-import { Admin } from '../../../usuarios/admin/entities/admin.entity';
+import { Admin } from '@module/usuarios/admin/entities/admin.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity('mod_permisos_modulo_asignacion')

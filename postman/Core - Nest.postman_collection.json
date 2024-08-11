@@ -532,7 +532,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"modulo_padre_id\": 4,\r\n    \"nombre_permiso\": \"activar_desactivar\"\r\n}",
+									"raw": "{\r\n    \"modulo_padre_id\": 17,\r\n    \"nombre_permiso\": \"eliminar\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -582,7 +582,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/modulos/buscar-permiso/1/administradores",
+									"raw": "localhost:3000/api/modulos/buscar-permiso/0/modulo",
 									"host": [
 										"localhost"
 									],
@@ -591,8 +591,47 @@
 										"api",
 										"modulos",
 										"buscar-permiso",
-										"1",
-										"administradores"
+										"0",
+										"modulo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar_modulos_paginados",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/modulos/lista/1?page=1&limit=10&field=id&order=asc",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"modulos",
+										"lista",
+										"1"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "field",
+											"value": "id"
+										},
+										{
+											"key": "order",
+											"value": "asc"
+										}
 									]
 								}
 							},
@@ -610,7 +649,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"modulo_padre_id\": 17,\r\n    \"nombre_permiso\": \"melasuda\",\r\n    \"user_id\": 2\r\n}",
+									"raw": "{\r\n    \"modulo_padre_id\": 31,\r\n    \"nombre_permiso\": \"eliminar\",\r\n    \"user_id\": 1\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"

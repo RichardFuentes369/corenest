@@ -16,6 +16,11 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@module/*": ["./src/mod/*"],
+      "@global/*": ["./src/global/*"],
+      "@guard/*": ["./src/guards/*"],
+    }
   }
 }

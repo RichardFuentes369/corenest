@@ -3,9 +3,9 @@ import { AuthuserService } from './auth.service';
 import { AuthuserController } from './auth.controller';
 
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from '../../../guards/constante';
+import { jwtConstants } from '@guard/constante';
 
-import { UserModule } from '../../usuarios/user/user.module';
+import { UserModule } from '@module/usuarios/user/user.module';
 @Module({
   imports: [
     UserModule, 

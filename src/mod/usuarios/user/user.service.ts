@@ -4,7 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
-import { PaginationDto } from '../../../global/dto/pagination.dto';
+import { PaginationDto } from '@global/dto/pagination.dto';
 
 @Injectable()
 export class UserService {

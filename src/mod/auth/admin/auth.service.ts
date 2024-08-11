@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException, UnauthorizedException, BadRequestException } from '@nestjs/common';
-import { AdminService } from '../../usuarios/admin/admin.service';
+import { AdminService } from '@module/usuarios/admin/admin.service';
 import { JwtService } from '@nestjs/jwt';
 
 import { I18nService } from 'nestjs-i18n';

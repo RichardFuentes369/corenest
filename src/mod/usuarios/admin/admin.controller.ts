@@ -3,9 +3,9 @@ import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 
-import { PaginationDto } from '../../../global/dto/pagination.dto';
+import { PaginationDto } from '@global/dto/pagination.dto';
 
-import { AdminGuard } from '../../../guards/roles/admin/admin.guard';
+import { AdminGuard } from '@guard/roles/admin/admin.guard';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('admin')

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ModulosService } from './modulos.service';
 import { ModulosController } from './modulos.controller';
 import { moduloProviders } from './entities/modulos.provider';
-import { GlobalModule } from 'src/global/global.module';
+import { GlobalModule } from '@global/global.module';
 
 @Module({
   imports: [GlobalModule],

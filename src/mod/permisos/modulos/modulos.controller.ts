@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { ModulosService } from './modulos.service'
 import { CreateModuloDto } from './dto/create-modulo.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { PaginationDto } from 'src/global/dto/pagination.dto';
+import { PaginationDto } from '@global/dto/pagination.dto';
 
 @Controller('modulos')
 export class ModulosController {

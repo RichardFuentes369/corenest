@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
-import { PaginationDto } from '../../../global/dto/pagination.dto';
+import { PaginationDto } from '@global/dto/pagination.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 // import { AuthGuard } from '../../mod-auth/authadmin/auth.guard';
