@@ -91,6 +91,20 @@ export class UserService {
     const property = await this.userRepository.findOne({
       where: { id }
     });
+
+    if(updateUserDto.email){
+      if(updateUserDto.email != property.email){
+  
+        let concidencia = await this.userRepository.findOne({
+          where: [ {email : updateUserDto.email}]
+        });
+        
+        if(concidencia) throw new NotFoundException(`
+          El correo que esta intentando actualizar ya existe
+        `)
+        
+      }
+    }
     
     return this.userRepository.save({
       ...property, // existing fields

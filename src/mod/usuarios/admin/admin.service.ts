@@ -91,7 +91,21 @@ export class AdminService {
     const property = await this.adminRepository.findOne({
       where: { id }
     });
-    
+
+    if(updateAdminDto.email){
+      if(updateAdminDto.email != property.email){
+  
+        let concidencia = await this.adminRepository.findOne({
+          where: [ {email : updateAdminDto.email}]
+        });
+        
+        if(concidencia) throw new NotFoundException(`
+          El correo que esta intentando actualizar ya existe
+        `)
+        
+      }
+    }
+
     return this.adminRepository.save({
       ...property, // existing fields
       ...updateAdminDto // updated fields
