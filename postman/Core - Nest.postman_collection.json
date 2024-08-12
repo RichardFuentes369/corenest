@@ -290,7 +290,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Admin121\",\r\n    \"lastName\": \"Principal\",\r\n    \"isActive\": true\r\n}",
+									"raw": "{\r\n    \"firstName\": \"Admin121\",\r\n    \"lastName\": \"Principal\",\r\n    \"isActive\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -298,7 +298,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/admin/editar-administrador/4",
+									"raw": "localhost:3000/api/admin/editar-administrador/1",
 									"host": [
 										"localhost"
 									],
@@ -307,7 +307,7 @@
 										"api",
 										"admin",
 										"editar-administrador",
-										"4"
+										"1"
 									]
 								}
 							},
