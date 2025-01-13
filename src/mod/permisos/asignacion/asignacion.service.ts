@@ -58,7 +58,10 @@ export class AsignacionService {
     .where('permiso.modulo_padre IS NULL')
     .andWhere('permiso.user = :userId', { userId:userId })
     .getRawMany();
-    
+
+    // mod_permisos_modulo_asignacion cuando sea null (indica que son los padres)
+    // consulto cada uno en la tabla mod_permisos_modulo pa saber que id tiene
+    // y ahi ya se cuales son los permios de cada modulo
     return Modulos;
 
     const SubModulos = await Promise.all(Modulos.map(async (permisosModulos) => {
