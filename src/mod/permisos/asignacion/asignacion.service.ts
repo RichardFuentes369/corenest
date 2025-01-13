@@ -58,6 +58,8 @@ export class AsignacionService {
     .where('permiso.modulo_padre IS NULL')
     .andWhere('permiso.user = :userId', { userId:userId })
     .getRawMany();
+    
+    return Modulos;
 
     const SubModulos = await Promise.all(Modulos.map(async (permisosModulos) => {
       const permisosSubmodulos = await this.moduloRepository.createQueryBuilder('permiso')

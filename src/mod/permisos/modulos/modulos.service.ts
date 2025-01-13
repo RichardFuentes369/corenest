@@ -18,7 +18,6 @@ export class ModulosService {
   }
 
   async findAll() {
-
     const Modulos = await this.moduloRepository.createQueryBuilder('permiso')
     .where('permiso.modulo_padre IS NULL')
     .getRawMany();
@@ -41,6 +40,61 @@ export class ModulosService {
 
     return SubModulos;
     
+  }
+
+  organizarJerarquia(data) {
+    // Crear un mapa de todos los elementos por ID para acceder fácilmente
+    const map = new Map();
+    const roots = [];
+  
+    // Crear los nodos base (padres, hijos, nietos)
+    data.forEach(item => {
+      if (!item.mpm_modulo_padre_id) {
+        map.set(item.mpm_id, { ...item, 'mpm_toogle': false, children: [] });
+      }else{
+        map.set(item.mpm_id, { ...item, children: [] });
+      }
+  
+      // Si no tiene 'mpm_modulo_padre_id', es un padre y lo agregamos a roots
+      if (!item.mpm_modulo_padre_id) {
+        roots.push(map.get(item.mpm_id));
+      }
+    });
+  
+    // Ahora asignamos a cada hijo a su correspondiente padre
+    data.forEach(item => {
+      if (item.mpm_modulo_padre_id) {
+        const parent = map.get(item.mpm_modulo_padre_id);
+        if (parent) {
+          parent.children.push(map.get(item.mpm_id));
+        }
+      }
+    });
+  
+    return roots;
+  }
+
+  async findAllForUser(userId) {
+    // Realizar la consulta
+    const query = await this.moduloRepository.createQueryBuilder('mpm')
+    .select([
+      'mpm.modulo_padre_id',
+      'mpm.id',
+      'mpm.nombre_permiso',
+    ])
+    .addSelect(subQuery => {
+      return subQuery
+        .select('COUNT(mpma.nombre_permiso) > 0')
+        .from('mod_permisos_modulo_asignacion', 'mpma')
+        .where('mpma.nombre_permiso = mpm.nombre_permiso')
+        .andWhere('mpma.modulo_padre_id = mpm.modulo_padre_id')
+        .andWhere('mpma.user_id = :userId', { userId });
+    }, 'asignado')
+    .getRawMany();
+
+    const result = this.organizarJerarquia(query)
+
+    return result;
   }
 
   async findPermiso(moduloId: number, nombrePermiso: string): Promise<Modulo>{

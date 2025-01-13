@@ -13,6 +13,12 @@ export class ModulosController {
   findAll() {
     return this.modulosService.findAll();
   }
+
+  @ApiTags('permisos_modulos')
+  @Get('listaUsuario/:userId')
+  findAllForUser(@Param('userId') userId: string) {
+    return this.modulosService.findAllForUser(+userId);
+  }
   
   @ApiTags('permisos_modulos')
   @Get('lista/:padreId')
