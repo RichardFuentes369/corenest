@@ -4,25 +4,28 @@ import { UpdateAsignacionDto } from './dto/update-asignacion.dto';
 
 import { Repository } from 'typeorm';
 import { Asignacion } from './entities/asignacion.entity';
+import { Modulo } from '../modulos/entities/modulo.entity';
 
 @Injectable()
 export class AsignacionService {
   constructor(
+    @Inject('PERMISO_MODULO_REPOSITORY')
+    private moduloRepository: Repository<Modulo>,
     @Inject('PERMISO_ASIGNACION_REPOSITORY')
-    private moduloRepository: Repository<Asignacion>,
+    private asignacionRepository: Repository<Asignacion>,
   ) {}
 
   async findPermiso(moduloId: number, nombrePermiso: string, userId: number): Promise<Asignacion>{
 
     if(moduloId == 0){
-      return this.moduloRepository.findOne({
+      return this.asignacionRepository.findOne({
         where: {
           nombre_permiso: nombrePermiso,
           user_id: userId
         },
       });
     }else{
-      return this.moduloRepository.findOne({
+      return this.asignacionRepository.findOne({
         where: {
           nombre_permiso: nombrePermiso,
           modulo_padre_id: moduloId,
@@ -48,46 +51,37 @@ export class AsignacionService {
       Este permiso, ya existe en nuestra base de datos
     `)
 
-    return this.moduloRepository.save(createAsignacionDto);
+    return this.asignacionRepository.save(createAsignacionDto);
 
   }
 
-  async findAll(userId: number) {
+  async findAll(userId: number, permiso: string) {
 
-    const Modulos = await this.moduloRepository.createQueryBuilder('permiso')
-    .where('permiso.modulo_padre IS NULL')
+    if(permiso){
+      const Permiso = await this.moduloRepository.createQueryBuilder('modulo')
+      .where('modulo.nombre_permiso = :permiso', { permiso:permiso })
+      .getOne();
+
+      const Modulos = await this.asignacionRepository.createQueryBuilder('permiso')
+      .where('permiso.user = :userId', { userId:userId })
+      .andWhere('permiso.modulo_padre_id = :id_permiso', { id_permiso:Permiso.id })
+      .getRawMany();
+
+      return Modulos;
+    }
+
+    const Modulos = await this.asignacionRepository.createQueryBuilder('permiso')
+    .where('permiso.modulo_padre_id  Is Null')
     .andWhere('permiso.user = :userId', { userId:userId })
     .getRawMany();
 
-    // mod_permisos_modulo_asignacion cuando sea null (indica que son los padres)
-    // consulto cada uno en la tabla mod_permisos_modulo pa saber que id tiene
-    // y ahi ya se cuales son los permios de cada modulo
     return Modulos;
-
-    const SubModulos = await Promise.all(Modulos.map(async (permisosModulos) => {
-      const permisosSubmodulos = await this.moduloRepository.createQueryBuilder('permiso')
-        .where('permiso.modulo_padre = :moduloPadreId', { moduloPadreId: permisosModulos.permiso_id })
-        .getMany();
-
-      const Acciones = await Promise.all(permisosSubmodulos.map(async (submodulo) => {
-        const permisosAcciones = await this.moduloRepository.createQueryBuilder('modulo')
-          .where('modulo.modulo_padre = :submoduloId', { submoduloId: submodulo.id })
-          .getMany();
-        
-        return { ...submodulo, permisosAcciones };
-      }));
-
-      return { ...permisosModulos, permisosSubmodulos: Acciones };
-    }));
-
-    return SubModulos;
-    
   }
 
   async delete(moduloId: number, nombrePermiso: string, userId: number){
 
     let idRegistro = (await this.findPermiso(moduloId, nombrePermiso, userId)).id
-    return this.moduloRepository.delete(idRegistro);
+    return this.asignacionRepository.delete(idRegistro);
     
   }
   

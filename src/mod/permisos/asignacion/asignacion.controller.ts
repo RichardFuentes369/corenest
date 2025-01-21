@@ -11,7 +11,13 @@ export class AsignacionController {
   @ApiTags('asignacion_permiso')
   @Get('mis-permisos/:idUser')
   findAll(@Param('idUser') idUser: string) {
-    return this.asignacionService.findAll(+idUser);
+    return this.asignacionService.findAll(+idUser, '');
+  }
+
+  @ApiTags('asignacion_permiso')
+  @Get('mis-permisos/:idUser/:permiso')
+  findAll2(@Param('idUser') idUser: string, @Param('permiso') permiso: string) {
+    return this.asignacionService.findAll(+idUser, permiso);
   }
 
   @ApiTags('asignacion_permiso')

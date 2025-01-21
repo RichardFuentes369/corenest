@@ -14,10 +14,6 @@ export class Asignacion {
 
   @Column({ nullable: true })
   user_id: number;
-  
-  @ManyToOne(() => Asignacion, { nullable: true })
-  @JoinColumn({ name: 'modulo_padre_id' })
-  modulo_padre: Asignacion;
 
   @ManyToOne(() => Admin, { nullable: true })
   @JoinColumn({ name: 'user_id' })

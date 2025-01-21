@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AsignacionService } from './asignacion.service';
 import { AsignacionController } from './asignacion.controller';
+import { moduloProviders } from '../modulos/entities/modulos.provider';
 import { asignacionProviders } from './entities/asignacion.provider';
 import { GlobalModule } from '@global/global.module';
 
@@ -8,6 +9,7 @@ import { GlobalModule } from '@global/global.module';
   imports: [GlobalModule],
   controllers: [AsignacionController],
   providers: [
+    ...moduloProviders,
     ...asignacionProviders,
     AsignacionService
   ],
