@@ -57,22 +57,22 @@ export class AsignacionService {
 
   async findAll(userId: number, permiso: string) {
 
-    if(permiso){
+    if(permiso != ''){
       const Permiso = await this.moduloRepository.createQueryBuilder('modulo')
       .where('modulo.nombre_permiso = :permiso', { permiso:permiso })
       .getOne();
-
+      
       const Modulos = await this.asignacionRepository.createQueryBuilder('permiso')
-      .where('permiso.user = :userId', { userId:userId })
+      .where('permiso.user_id = :userId', { userId:userId })
       .andWhere('permiso.modulo_padre_id = :id_permiso', { id_permiso:Permiso.id })
       .getRawMany();
-
+      
       return Modulos;
     }
 
     const Modulos = await this.asignacionRepository.createQueryBuilder('permiso')
     .where('permiso.modulo_padre_id  Is Null')
-    .andWhere('permiso.user = :userId', { userId:userId })
+    .andWhere('permiso.user_id = :userId', { userId:userId })
     .getRawMany();
 
     return Modulos;
