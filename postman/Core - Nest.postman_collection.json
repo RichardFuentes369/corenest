@@ -87,7 +87,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Usuario4\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user4@gmail.com\",\r\n    \"isActive\": false\r\n}",
+									"raw": "{\r\n    \"firstName\": \"Usuario1\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user1@gmail.com\",\r\n    \"isActive\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -507,32 +507,34 @@
 					"name": "modulos",
 					"item": [
 						{
-							"name": "listar_modulos_permisos",
+							"name": "listar_permisos",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/modulos",
+									"raw": "localhost:3000/api/modulos/listaUsuario/1",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
 										"api",
-										"modulos"
+										"modulos",
+										"listaUsuario",
+										"1"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "crear_modulos_permisos",
+							"name": "crear_permisos_niveles",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"modulo_padre_id\": 17,\r\n    \"nombre_permiso\": \"eliminar\"\r\n}",
+									"raw": "{\r\n    \"modulo_padre_id\": 24,\r\n    \"nombre_permiso\": \"elasiminar\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -555,12 +557,12 @@
 							"response": []
 						},
 						{
-							"name": "eliminar_modulos_permisos",
+							"name": "eliminar_permisos_hijos",
 							"request": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/modulos/eliminar-permiso-modulo/1/editorial23",
+									"raw": "localhost:3000/api/modulos/eliminar-permiso-modulo/24/elasiminar",
 									"host": [
 										"localhost"
 									],
@@ -569,15 +571,15 @@
 										"api",
 										"modulos",
 										"eliminar-permiso-modulo",
-										"1",
-										"editorial23"
+										"24",
+										"elasiminar"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "buscar_modulo_permiso",
+							"name": "buscar_permiso_por_modulo",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -649,7 +651,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"modulo_padre_id\": 31,\r\n    \"nombre_permiso\": \"eliminar\",\r\n    \"user_id\": 1\r\n}",
+									"raw": "{\r\n    \"modulo_padre_id\": 31,\r\n    \"nombre_permiso\": \"me_la_suda\",\r\n    \"user_id\": 1\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -739,12 +741,15 @@
 							"response": []
 						},
 						{
-							"name": "lista_mis_permisos_modulo",
+							"name": "listar_mis_permisos_modulo",
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/asignacion/mis-permisos/1",
+									"raw": "localhost:3000/api/asignacion/mis-permisos/1/administradores",
 									"host": [
 										"localhost"
 									],
@@ -753,7 +758,8 @@
 										"api",
 										"asignacion",
 										"mis-permisos",
-										"1"
+										"1",
+										"administradores"
 									]
 								}
 							},
