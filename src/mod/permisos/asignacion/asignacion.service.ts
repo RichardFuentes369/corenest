@@ -78,10 +78,17 @@ export class AsignacionService {
     return Modulos;
   }
 
-  async delete(moduloId: number, nombrePermiso: string, userId: number){
+  async delete(query: any){
 
-    let idRegistro = (await this.findPermiso(moduloId, nombrePermiso, userId)).id
-    return this.asignacionRepository.delete(idRegistro);
+    let idRegistro = (await this.findPermiso(+query.idModulo, query.nombrePermiso, +query.userId))?.id
+    let msj = ''
+    if(idRegistro){
+      this.asignacionRepository.delete(idRegistro)
+      msj = 'Registro eliminado'
+    }else{
+      msj = 'No se encontro registro'
+    }
+    return msj;
     
   }
   

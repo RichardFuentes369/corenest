@@ -9,39 +9,38 @@ export class ModulosController {
   constructor(private readonly modulosService: ModulosService) {}
 
   @ApiTags('permisos_modulos')
-  @Get()
+  @Get('getPermisosSobreModulo')
   findAll() {
     return this.modulosService.findAll();
   }
-
+  
   @ApiTags('permisos_modulos')
-  @Get('listaUsuario/:userId')
-  findAllForUser(@Param('userId') userId: string) {
-    return this.modulosService.findAllForUser(+userId);
+  @Get('getPermisoExistente')
+  findOne(@Query() query) {
+    return this.modulosService.findPermiso(+query.idModulo, query.nombre);
   }
   
   @ApiTags('permisos_modulos')
-  @Get('lista/:padreId')
-  // @UseGuards(AdminGuard)
+  @Get('getPermisosSobrePadre/:padreId')
   findPaginada(@Param('padreId') padreId: string, @Query() paginationDto: PaginationDto) {
     return this.modulosService.findPaginada(+padreId, paginationDto);
   }
 
   @ApiTags('permisos_modulos')
-  @Get('buscar-permiso/:idModulo/:nombre')
-  findOne(@Param('idModulo') idModulo: string, @Param('nombre') nombre: string) {
-    return this.modulosService.findPermiso(+idModulo, nombre);
+  @Get('getPermisosPorUsuario')
+  findAllForUser(@Query() query) {
+    return this.modulosService.findAllForUser(query);
   }
 
   @ApiTags('permisos_modulos')
-  @Post('crear-permiso-modulo')
+  @Post('postModuloPermiso')
   create(@Body() createModuloDto: CreateModuloDto) {
     return this.modulosService.create(createModuloDto);
   }
 
   @ApiTags('permisos_modulos')
-  @Delete('eliminar-permiso-modulo/:idModulo/:nombre')
-  delete(@Param('idModulo') idModulo: string, @Param('nombre') nombre: string) {
-    return this.modulosService.delete(+idModulo, nombre);
+  @Delete('deleteModuloPermiso')
+  delete(@Query() queryParams) {
+    return this.modulosService.delete(queryParams);
   }
 }

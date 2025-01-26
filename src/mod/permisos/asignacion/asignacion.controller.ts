@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { AsignacionService } from './asignacion.service';
 import { CreateAsignacionDto } from './dto/create-asignacion.dto';
 import { UpdateAsignacionDto } from './dto/update-asignacion.dto';
@@ -9,33 +9,31 @@ export class AsignacionController {
   constructor(private readonly asignacionService: AsignacionService) {}
 
   @ApiTags('asignacion_permiso')
-  @Get('mis-permisos/:idUser')
-  findAll(@Param('idUser') idUser: string) {
-    return this.asignacionService.findAll(+idUser, '');
+  @Get('mis-permisos')
+  findAll(@Query() query) {
+    if(query.heredadosDe){
+      return this.asignacionService.findAll(+query.idUser, query.heredadosDe);
+    }
+    return this.asignacionService.findAll(+query.idUser, '');
   }
 
   @ApiTags('asignacion_permiso')
-  @Get('mis-permisos/:idUser/:permiso')
-  findAll2(@Param('idUser') idUser: string, @Param('permiso') permiso: string) {
-    return this.asignacionService.findAll(+idUser, permiso);
+  @Get('getAsignacionMePertenece')
+  findOne(@Query() query) {
+    return this.asignacionService.findPermiso(+query.idModulo, query.nombre, +query.idUser);
   }
 
   @ApiTags('asignacion_permiso')
-  @Get('buscar-permiso/:idModulo/:nombre/:idUsuario')
-  findOne(@Param('idModulo') idModulo: string, @Param('nombre') nombre: string, @Param('idUsuario') idUsuario: string) {
-    return this.asignacionService.findPermiso(+idModulo, nombre, +idUsuario);
-  }
-
-  @ApiTags('asignacion_permiso')
-  @Post('asignacion-permiso')
+  @Post('postAsigancionPermiso')
   create(@Body() createAsignacionDto: CreateAsignacionDto) {
     return this.asignacionService.create(createAsignacionDto);
   }
 
   @ApiTags('asignacion_permiso')
-  @Delete('eliminar-permiso-asignado/:idModulo/:nombre/:idUsuario')
-  delete(@Param('idModulo') idModulo: string, @Param('nombre') nombre: string, @Param('idUsuario') idUsuario: string) {
-    return this.asignacionService.delete(+idModulo, nombre, +idUsuario);
+  @Delete('deleteAsignacionPermiso')
+  delete(@Query() query) {
+    return this.asignacionService.delete(query);
   }
 
 }
+

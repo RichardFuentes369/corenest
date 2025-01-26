@@ -74,7 +74,8 @@ export class ModulosService {
     return roots;
   }
 
-  async findAllForUser(userId) {
+  async findAllForUser(queryParams) {
+
     // Realizar la consulta
     const query = await this.moduloRepository.createQueryBuilder('mpm')
     .select([
@@ -88,7 +89,7 @@ export class ModulosService {
         .from('mod_permisos_modulo_asignacion', 'mpma')
         .where('mpma.nombre_permiso = mpm.nombre_permiso')
         .andWhere('mpma.modulo_padre_id = mpm.modulo_padre_id')
-        .andWhere('mpma.user_id = :userId', { userId });
+        .andWhere('mpma.user_id = :userId', { userId: queryParams.userId });
     }, 'asignado')
     .getRawMany();
 
@@ -135,9 +136,9 @@ export class ModulosService {
 
   }
 
-  async delete(moduloId: number, nombrePermiso: string){
+  async delete(query: any){
 
-    let idRegistro = (await this.findPermiso(moduloId, nombrePermiso)).id
+    let idRegistro = (await this.findPermiso(query.idModulo, query.nombre)).id
     return this.moduloRepository.delete(idRegistro);
     
   }

@@ -507,12 +507,12 @@
 					"name": "modulos",
 					"item": [
 						{
-							"name": "listar_permisos",
+							"name": "getPermisosPorUsuario",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/modulos/listaUsuario/1",
+									"raw": "localhost:3000/api/modulos/getPermisosPorUsuario?userId=1",
 									"host": [
 										"localhost"
 									],
@@ -520,21 +520,26 @@
 									"path": [
 										"api",
 										"modulos",
-										"listaUsuario",
-										"1"
+										"getPermisosPorUsuario"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "crear_permisos_niveles",
+							"name": "postModuloPermiso",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"modulo_padre_id\": 24,\r\n    \"nombre_permiso\": \"elasiminar\"\r\n}",
+									"raw": "{\r\n    \"modulo_padre_id\": 23,\r\n    \"nombre_permiso\": \"elasiminar\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -542,7 +547,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/modulos/crear-permiso-modulo",
+									"raw": "localhost:3000/api/modulos/postModuloPermiso",
 									"host": [
 										"localhost"
 									],
@@ -550,19 +555,19 @@
 									"path": [
 										"api",
 										"modulos",
-										"crear-permiso-modulo"
+										"postModuloPermiso"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "eliminar_permisos_hijos",
+							"name": "deleteModuloPermiso",
 							"request": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/modulos/eliminar-permiso-modulo/24/elasiminar",
+									"raw": "localhost:3000/api/modulos/deleteModuloPermiso?idModulo=23&nombre=elasiminar",
 									"host": [
 										"localhost"
 									],
@@ -570,21 +575,53 @@
 									"path": [
 										"api",
 										"modulos",
-										"eliminar-permiso-modulo",
-										"24",
-										"elasiminar"
+										"deleteModuloPermiso"
+									],
+									"query": [
+										{
+											"key": "idModulo",
+											"value": "23"
+										},
+										{
+											"key": "nombre",
+											"value": "elasiminar"
+										}
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "buscar_permiso_por_modulo",
+							"name": "getPermisoExistente",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"method": "GET",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "localhost:3000/api/modulos/buscar-permiso/0/modulo",
+									"raw": "localhost:3000/api/modulos/getPermisoExistente?idModulo=0&nombre=modulo",
 									"host": [
 										"localhost"
 									],
@@ -592,21 +629,29 @@
 									"path": [
 										"api",
 										"modulos",
-										"buscar-permiso",
-										"0",
-										"modulo"
+										"getPermisoExistente"
+									],
+									"query": [
+										{
+											"key": "idModulo",
+											"value": "0"
+										},
+										{
+											"key": "nombre",
+											"value": "modulo"
+										}
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "listar_modulos_paginados",
+							"name": "getPermisosSobrePadre",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/modulos/lista/1?page=1&limit=10&field=id&order=asc",
+									"raw": "localhost:3000/api/modulos/getPermisosSobrePadre/0?page=1&limit=10&field=id&order=asc",
 									"host": [
 										"localhost"
 									],
@@ -614,8 +659,8 @@
 									"path": [
 										"api",
 										"modulos",
-										"lista",
-										"1"
+										"getPermisosSobrePadre",
+										"0"
 									],
 									"query": [
 										{
@@ -638,6 +683,27 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "getPermisosSobreModulo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/modulos/getPermisosSobreModulo/",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"modulos",
+										"getPermisosSobreModulo",
+										""
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -645,7 +711,7 @@
 					"name": "asignaciones",
 					"item": [
 						{
-							"name": "crear_asignacion_permisos",
+							"name": "postAsigancionPermiso",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -659,7 +725,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/asignacion/asignacion-permiso",
+									"raw": "localhost:3000/api/asignacion/postAsigancionPermiso",
 									"host": [
 										"localhost"
 									],
@@ -667,19 +733,19 @@
 									"path": [
 										"api",
 										"asignacion",
-										"asignacion-permiso"
+										"postAsigancionPermiso"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "listar_mis_permisos_menu",
+							"name": "getMisPermisosMenu",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/asignacion/mis-permisos/1",
+									"raw": "localhost:3000/api/asignacion/mis-permisos?idUser=1",
 									"host": [
 										"localhost"
 									],
@@ -687,20 +753,25 @@
 									"path": [
 										"api",
 										"asignacion",
-										"mis-permisos",
-										"1"
+										"mis-permisos"
+									],
+									"query": [
+										{
+											"key": "idUser",
+											"value": "1"
+										}
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "eliminar_permiso",
+							"name": "deleteAsignacionPermiso",
 							"request": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/asignacion/eliminar-permiso-asignado/17/melasuda/2",
+									"raw": "localhost:3000/api/asignacion/deleteAsignacionPermiso?idModulo=31&nombrePermiso=me_la_suda&userId=1",
 									"host": [
 										"localhost"
 									],
@@ -708,22 +779,33 @@
 									"path": [
 										"api",
 										"asignacion",
-										"eliminar-permiso-asignado",
-										"17",
-										"melasuda",
-										"2"
+										"deleteAsignacionPermiso"
+									],
+									"query": [
+										{
+											"key": "idModulo",
+											"value": "31"
+										},
+										{
+											"key": "nombrePermiso",
+											"value": "me_la_suda"
+										},
+										{
+											"key": "userId",
+											"value": "1"
+										}
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "buscar_permiso",
+							"name": "getAsignacionMePertenece",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/asignacion/buscar-permiso/1/administradores/1",
+									"raw": "localhost:3000/api/asignacion/getAsignacionMePertenece?idModulo=1&nombre=administradores&idUser=1",
 									"host": [
 										"localhost"
 									],
@@ -731,10 +813,21 @@
 									"path": [
 										"api",
 										"asignacion",
-										"buscar-permiso",
-										"1",
-										"administradores",
-										"1"
+										"getAsignacionMePertenece"
+									],
+									"query": [
+										{
+											"key": "idModulo",
+											"value": "1"
+										},
+										{
+											"key": "nombre",
+											"value": "administradores"
+										},
+										{
+											"key": "idUser",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -749,7 +842,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/asignacion/mis-permisos/1/administradores",
+									"raw": "localhost:3000/api/asignacion/mis-permisos?idUser=1&heredadosDe=usuarios",
 									"host": [
 										"localhost"
 									],
@@ -757,9 +850,17 @@
 									"path": [
 										"api",
 										"asignacion",
-										"mis-permisos",
-										"1",
-										"administradores"
+										"mis-permisos"
+									],
+									"query": [
+										{
+											"key": "idUser",
+											"value": "1"
+										},
+										{
+											"key": "heredadosDe",
+											"value": "usuarios"
+										}
 									]
 								}
 							},
