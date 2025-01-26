@@ -6,7 +6,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { PaginationDto } from '@global/dto/pagination.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-// import { AuthGuard } from '../../mod-auth/authadmin/auth.guard';
+import { FinalGuard } from '@guard/final/final.guard';
 
 @Controller('user')
 export class UserController {

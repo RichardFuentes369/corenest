@@ -3,7 +3,7 @@ import { AuthuserService } from './auth.service';
 import { AuthuserController } from './auth.controller';
 
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from '@guard/constante';
+import { jwtConstants } from '@guard/secret_key';
 
 import { UserModule } from '@module/user/final/user/user.module';
 @Module({

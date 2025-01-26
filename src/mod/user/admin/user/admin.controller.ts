@@ -5,7 +5,7 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 
 import { PaginationDto } from '@global/dto/pagination.dto';
 
-import { AdminGuard } from '@guard/roles/admin/admin.guard';
+import { AdminGuard } from '@guard/admin/admin.guard';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('admin')
