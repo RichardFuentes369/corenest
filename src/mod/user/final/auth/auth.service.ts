@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, UnauthorizedException, BadRequestException } from '@nestjs/common';
 
-import { UserService } from '@module/usuarios/user/user.service';
+import { UserService } from '@module/user/final/user/user.service';
 import { JwtService } from '@nestjs/jwt';
 
 import { I18nService } from 'nestjs-i18n';

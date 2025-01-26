@@ -1,11 +1,11 @@
-export { AuthadminModule } from './auth/admin/auth.module'
-export { AdminModule } from './usuarios/admin/admin.module';
+export { AuthadminModule } from './user/admin/auth/auth.module'
+export { AdminModule } from './user/admin/user/admin.module';
 
-export { AuthuserModule } from './auth/user/auth.module'
-export { UserModule } from './usuarios/user/user.module';
+export { AuthuserModule } from './user/final/auth/auth.module'
+export { UserModule } from './user/final/user/user.module';
 
-export { AsignacionModule } from './permisos/asignacion/asignacion.module'
-export { ModulosModule } from './permisos/modulos/modulos.module'
+export { AsignacionModule } from './user/admin/permission/asignacion/asignacion.module'
+export { ModulosModule } from './user/admin/permission/modulos/modulos.module'
 
 
 
