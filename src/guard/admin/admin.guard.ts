@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { AdminService } from '@module/user/admin/user/admin.service';
 import { JwtService } from '@nestjs/jwt';
-import { jwtConstants } from '../../constante';
+import { jwtConstants } from '@guard/secret_key';
 import { Request } from 'express';
 
 @Injectable()

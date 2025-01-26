@@ -5,11 +5,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { jwtConstants } from '../../constante';
+import { jwtConstants } from '@guard/secret_key';
 import { Request } from 'express';
 
 @Injectable()
-export class UserGuard implements CanActivate {
+export class FinalGuard implements CanActivate {
   constructor(private jwtService: JwtService) { }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {

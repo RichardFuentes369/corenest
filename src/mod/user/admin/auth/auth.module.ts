@@ -3,7 +3,7 @@ import { AuthadminService } from './auth.service';
 import { AuthadminController } from './auth.controller';
 
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from '@guard/constante';
+import { jwtConstants } from '@guard/secret_key';
 
 import { AdminModule } from '@module/user/admin/user/admin.module';
 

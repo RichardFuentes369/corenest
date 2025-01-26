@@ -8,7 +8,7 @@ import {
   Request,
   UseGuards
 } from '@nestjs/common';
-import { UserGuard } from '@guard/roles/user/user.guard';
+import { FinalGuard } from '@guard/final/final.guard';
 import { AuthuserService } from './auth.service';
 import { CreateAuthuserDto } from './dto/create-auth.dto';
 import { TokenDto } from './dto/token.dto';
@@ -33,7 +33,7 @@ export class AuthuserController {
   }
 
   @ApiTags('autenticacion_user')
-  @UseGuards(UserGuard)
+  @UseGuards(FinalGuard)
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;

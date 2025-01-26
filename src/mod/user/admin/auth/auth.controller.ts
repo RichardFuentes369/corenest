@@ -8,7 +8,7 @@ import {
   Request,
   UseGuards
 } from '@nestjs/common';
-import { AdminGuard } from '@guard/roles/admin/admin.guard';
+import { AdminGuard } from '@guard/admin/admin.guard';
 import { AuthadminService } from './auth.service';
 import { CreateAuthadminDto } from './dto/create-auth.dto';
 import { TokenDto } from './dto/token.dto';

@@ -20,7 +20,7 @@
     "paths": {
       "@module/*": ["./src/mod/*"],
       "@global/*": ["./src/global/*"],
-      "@guard/*": ["./src/guards/*"],
+      "@guard/*": ["./src/guard/*"],
     }
   }
 }
