@@ -88,7 +88,7 @@ export class ModulosService {
         .select('COUNT(mpma.nombre_permiso) > 0')
         .from('mod_permisos_modulo_asignacion', 'mpma')
         .where('mpma.nombre_permiso = mpm.nombre_permiso')
-        .andWhere('mpma.modulo_padre_id = mpm.modulo_padre_id')
+        .andWhere('mpma.modulo_padre_id = mpm.modulo_padre_id OR mpm.modulo_padre_id IS NULL')
         .andWhere('mpma.user_id = :userId', { userId: queryParams.userId });
     }, 'asignado')
     .getRawMany();
