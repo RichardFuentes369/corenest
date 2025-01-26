@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Put } from '@nestjs/common';
 import { AsignacionService } from './asignacion.service';
 import { CreateAsignacionDto } from './dto/create-asignacion.dto';
 import { UpdateAsignacionDto } from './dto/update-asignacion.dto';
@@ -20,20 +20,15 @@ export class AsignacionController {
   @ApiTags('asignacion_permiso')
   @Get('getAsignacionMePertenece')
   findOne(@Query() query) {
-    return this.asignacionService.findPermiso(+query.idModulo, query.nombre, +query.idUser);
+    return this.asignacionService.findOne(+query.idModulo, query.nombre, +query.idUser);
   }
 
   @ApiTags('asignacion_permiso')
-  @Post('postAsigancionPermiso')
-  create(@Body() createAsignacionDto: CreateAsignacionDto) {
-    return this.asignacionService.create(createAsignacionDto);
+  @Put('updateAsignacionPermiso')
+  updateAsignacion(@Query() query) {
+    return this.asignacionService.updateAsignacion(+query.idPermiso, +query.idPadre, +query.opcion, +query.idUser);
   }
 
-  @ApiTags('asignacion_permiso')
-  @Delete('deleteAsignacionPermiso')
-  delete(@Query() query) {
-    return this.asignacionService.delete(query);
-  }
 
 }
 

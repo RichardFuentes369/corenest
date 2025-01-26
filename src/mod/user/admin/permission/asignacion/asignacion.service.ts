@@ -15,7 +15,7 @@ export class AsignacionService {
     private asignacionRepository: Repository<Asignacion>,
   ) {}
 
-  async findPermiso(moduloId: number, nombrePermiso: string, userId: number): Promise<Asignacion>{
+  async findOne(moduloId: number, nombrePermiso: string, userId: number): Promise<Asignacion>{
 
     if(moduloId == 0){
       return this.asignacionRepository.findOne({
@@ -33,25 +33,6 @@ export class AsignacionService {
         },
       });
     }
-
-  }
-
-  async create(createAsignacionDto: CreateAsignacionDto) {
-
-    let moduloId = null
-    if(createAsignacionDto.modulo_padre_id){
-      moduloId = createAsignacionDto.modulo_padre_id
-    }else{
-      moduloId = 0
-    }
-
-    let busquedaPermiso = await this.findPermiso(moduloId, createAsignacionDto.nombre_permiso, createAsignacionDto.user_id)
-
-    if(busquedaPermiso) throw new NotFoundException(`
-      Este permiso, ya existe en nuestra base de datos
-    `)
-
-    return this.asignacionRepository.save(createAsignacionDto);
 
   }
 
@@ -78,18 +59,34 @@ export class AsignacionService {
     return Modulos;
   }
 
-  async delete(query: any){
+  async updateAsignacion(idPermiso: number, idPadre: number, opcion: number, idUser: number){
+    const permisoMaestro = await this.moduloRepository.findOne({
+      where: {
+        id: idPermiso
+      },
+    });
 
-    let idRegistro = (await this.findPermiso(+query.idModulo, query.nombrePermiso, +query.userId))?.id
-    let msj = ''
-    if(idRegistro){
-      this.asignacionRepository.delete(idRegistro)
-      msj = 'Registro eliminado'
-    }else{
-      msj = 'No se encontro registro'
+    if(opcion == 0){
+      let model = {
+        'nombre_permiso': permisoMaestro.nombre_permiso,
+        'modulo_padre_id':  (permisoMaestro.modulo_padre_id) ? permisoMaestro.modulo_padre_id : null,
+        'user_id': idUser
+      }
+      return this.asignacionRepository.save(model);
     }
-    return msj;
-    
+
+    if(permisoMaestro){
+      const permisoAsignado = await this.asignacionRepository.findOne({
+        where: {
+          'nombre_permiso': permisoMaestro.nombre_permiso,
+          'modulo_padre_id': (permisoMaestro.modulo_padre_id) ? permisoMaestro.modulo_padre_id : null,
+          'user_id': idUser
+        },  
+      });
+      return this.asignacionRepository.delete(permisoAsignado.id);
+    }
+
   }
+
   
 }
