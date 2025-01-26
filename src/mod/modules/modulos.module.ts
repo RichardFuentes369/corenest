@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+
 import { ModulosService } from './modulos.service';
 import { ModulosController } from './modulos.controller';
 import { moduloProviders } from './entities/modulos.provider';
@@ -14,3 +15,4 @@ import { GlobalModule } from '@global/global.module';
   exports: [ModulosService]
 })
 export class ModulosModule {}
+

@@ -7,864 +7,876 @@
 	},
 	"item": [
 		{
-			"name": "ModUsers",
+			"name": "modules",
 			"item": [
 				{
-					"name": "usuarios",
-					"item": [
-						{
-							"name": "getUsuarios",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/user?page=1&limit=3&field=id&order=asc",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"user"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "3"
-										},
-										{
-											"key": "field",
-											"value": "id"
-										},
-										{
-											"key": "order",
-											"value": "asc"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getUsuario-Id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/user/obtener-usuario/1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"user",
-										"obtener-usuario",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "postUsuario",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Usuario1\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user1@gmail.com\",\r\n    \"isActive\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/user/crear-usuario",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"user",
-										"crear-usuario"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "deleteUsuario",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/user/eliminar-usuario/4",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"user",
-										"eliminar-usuario",
-										"4"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "putUsuario",
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Javier\",\r\n    \"lastName\": \"Baron\",\r\n    \"isActive\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/user/editar-usuario/4",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"user",
-										"editar-usuario",
-										"4"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "administradores",
-					"item": [
-						{
-							"name": "getAdmins",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{tokenAdmin}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/admin?page=1&limit=2&field=id&order=asc",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"admin"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "2"
-										},
-										{
-											"key": "field",
-											"value": "id"
-										},
-										{
-											"key": "order",
-											"value": "asc"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getAdmins-Id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/admin/obtener-administrador/1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"admin",
-										"obtener-administrador",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "postAdmin",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"AdminName2\",\r\n    \"lastName\": \"AdminLastname2\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"admin2@correo.com\",\r\n    \"isActive\": false\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/admin/crear-admininistrador",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"admin",
-										"crear-admininistrador"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "deleteAdmin",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/admin/eliminar-admininistrador/4",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"admin",
-										"eliminar-admininistrador",
-										"4"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "putAdmin",
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Admin121\",\r\n    \"lastName\": \"Principal\",\r\n    \"isActive\": false\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/admin/editar-administrador/1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"admin",
-										"editar-administrador",
-										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			],
-			"description": "Logica usuario administradores\n\nLogica usuarios finales\n\nLogica asignar permisos\n\nLogica crear modulos"
-		},
-		{
-			"name": "Login",
-			"item": [
-				{
-					"name": "singinAdmin",
+					"name": "getPermisosPorUsuario",
 					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"admin1@correo.com\",\r\n    \"pass\": \"Qwerty9601\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/api/authadmin/login",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"authadmin",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "singinUser",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"user1@gmail.com\",\r\n    \"pass\": \"Qwerty9601\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/api/authuser/login",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"authuser",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "profileAdmin",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{tokenAdmin}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/authadmin/profile",
+							"raw": "localhost:3000/api/modulos/getPermisosPorUsuario?userId=1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"authadmin",
-								"profile"
+								"modulos",
+								"getPermisosPorUsuario"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "profileUser",
+					"name": "postModuloPermiso",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modulo_padre_id\": 23,\r\n    \"nombre_permiso\": \"elasiminar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/modulos/postModuloPermiso",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"modulos",
+								"postModuloPermiso"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteModuloPermiso",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/modulos/deleteModuloPermiso?idModulo=23&nombre=elasiminar",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"modulos",
+								"deleteModuloPermiso"
+							],
+							"query": [
 								{
-									"key": "token",
-									"value": "{{tokenUser}}",
-									"type": "string"
+									"key": "idModulo",
+									"value": "23"
+								},
+								{
+									"key": "nombre",
+									"value": "elasiminar"
 								}
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPermisoExistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
+						"url": {
+							"raw": "localhost:3000/api/modulos/getPermisoExistente?idModulo=0&nombre=modulo",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"modulos",
+								"getPermisoExistente"
+							],
+							"query": [
+								{
+									"key": "idModulo",
+									"value": "0"
+								},
+								{
+									"key": "nombre",
+									"value": "modulo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPermisosSobrePadre",
+					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/authuser/profile",
+							"raw": "localhost:3000/api/modulos/getPermisosSobrePadre/0?page=1&limit=10&field=id&order=asc",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"authuser",
-								"profile"
+								"modulos",
+								"getPermisosSobrePadre",
+								"0"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "field",
+									"value": "id"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "refreshAdmin",
+					"name": "getPermisosSobreModulo",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"token\": \"{{tokenAdmin}}\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "localhost:3000/api/authadmin/refresh",
+							"raw": "localhost:3000/api/modulos/getPermisosSobreModulo/",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"authadmin",
-								"refresh"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "refreshUser",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"token\": \"{{tokenUser}}\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/api/authuser/refresh",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"authuser",
-								"refresh"
+								"modulos",
+								"getPermisosSobreModulo",
+								""
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"description": "Logica autenticacion\n\nadministrador  \nusuario final\n\nrefrescar token"
+			]
 		},
 		{
-			"name": "ModPermisos",
+			"name": "posts",
+			"item": []
+		},
+		{
+			"name": "users",
 			"item": [
 				{
-					"name": "modulos",
+					"name": "admin",
 					"item": [
 						{
-							"name": "getPermisosPorUsuario",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/modulos/getPermisosPorUsuario?userId=1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"getPermisosPorUsuario"
-									],
-									"query": [
-										{
-											"key": "userId",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "postModuloPermiso",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"modulo_padre_id\": 23,\r\n    \"nombre_permiso\": \"elasiminar\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:3000/api/modulos/postModuloPermiso",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"postModuloPermiso"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "deleteModuloPermiso",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/modulos/deleteModuloPermiso?idModulo=23&nombre=elasiminar",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"deleteModuloPermiso"
-									],
-									"query": [
-										{
-											"key": "idModulo",
-											"value": "23"
-										},
-										{
-											"key": "nombre",
-											"value": "elasiminar"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getPermisoExistente",
-							"event": [
+							"name": "auth",
+							"item": [
 								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
+									"name": "singinAdmin",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"admin1@correo.com\",\r\n    \"pass\": \"Qwerty9601\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/authadmin/login",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"authadmin",
+												"login"
+											]
 										}
-									}
+									},
+									"response": []
 								},
-								"url": {
-									"raw": "localhost:3000/api/modulos/getPermisoExistente?idModulo=0&nombre=modulo",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"getPermisoExistente"
-									],
-									"query": [
-										{
-											"key": "idModulo",
-											"value": "0"
+								{
+									"name": "refreshAdmin",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"token\": \"{{tokenAdmin}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
-										{
-											"key": "nombre",
-											"value": "modulo"
+										"url": {
+											"raw": "localhost:3000/api/authadmin/refresh",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"authadmin",
+												"refresh"
+											]
 										}
-									]
+									},
+									"response": []
+								},
+								{
+									"name": "profileAdmin",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenAdmin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/authadmin/profile",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"authadmin",
+												"profile"
+											]
+										}
+									},
+									"response": []
 								}
-							},
-							"response": []
+							]
 						},
 						{
-							"name": "getPermisosSobrePadre",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/modulos/getPermisosSobrePadre/0?page=1&limit=10&field=id&order=asc",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"getPermisosSobrePadre",
-										"0"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
+							"name": "permission",
+							"item": [
+								{
+									"name": "postAsigancionPermiso",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"modulo_padre_id\": 31,\r\n    \"nombre_permiso\": \"me_la_suda\",\r\n    \"user_id\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
-											"key": "field",
-											"value": "id"
-										},
-										{
-											"key": "order",
-											"value": "asc"
+										"url": {
+											"raw": "localhost:3000/api/asignacion/postAsigancionPermiso",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"asignacion",
+												"postAsigancionPermiso"
+											]
 										}
-									]
+									},
+									"response": []
+								},
+								{
+									"name": "getMisPermisosMenu",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/asignacion/mis-permisos?idUser=1",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"asignacion",
+												"mis-permisos"
+											],
+											"query": [
+												{
+													"key": "idUser",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteAsignacionPermiso",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/asignacion/deleteAsignacionPermiso?idModulo=31&nombrePermiso=me_la_suda&userId=1",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"asignacion",
+												"deleteAsignacionPermiso"
+											],
+											"query": [
+												{
+													"key": "idModulo",
+													"value": "31"
+												},
+												{
+													"key": "nombrePermiso",
+													"value": "me_la_suda"
+												},
+												{
+													"key": "userId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getAsignacionMePertenece",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/asignacion/getAsignacionMePertenece?idModulo=1&nombre=administradores&idUser=1",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"asignacion",
+												"getAsignacionMePertenece"
+											],
+											"query": [
+												{
+													"key": "idModulo",
+													"value": "1"
+												},
+												{
+													"key": "nombre",
+													"value": "administradores"
+												},
+												{
+													"key": "idUser",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "listar_mis_permisos_modulo",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/asignacion/mis-permisos?idUser=1&heredadosDe=usuarios",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"asignacion",
+												"mis-permisos"
+											],
+											"query": [
+												{
+													"key": "idUser",
+													"value": "1"
+												},
+												{
+													"key": "heredadosDe",
+													"value": "usuarios"
+												}
+											]
+										}
+									},
+									"response": []
 								}
-							},
-							"response": []
+							]
 						},
 						{
-							"name": "getPermisosSobreModulo",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/modulos/getPermisosSobreModulo/",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"modulos",
-										"getPermisosSobreModulo",
-										""
-									]
+							"name": "user",
+							"item": [
+								{
+									"name": "getAdmins",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenAdmin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/admin?page=1&limit=2&field=id&order=asc",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"admin"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "2"
+												},
+												{
+													"key": "field",
+													"value": "id"
+												},
+												{
+													"key": "order",
+													"value": "asc"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getAdmins-Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/admin/obtener-administrador/1",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"admin",
+												"obtener-administrador",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "postAdmin",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"AdminName2\",\r\n    \"lastName\": \"AdminLastname2\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"admin2@correo.com\",\r\n    \"isActive\": false\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/admin/crear-admininistrador",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"admin",
+												"crear-admininistrador"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteAdmin",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/admin/eliminar-admininistrador/4",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"admin",
+												"eliminar-admininistrador",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "putAdmin",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Admin121\",\r\n    \"lastName\": \"Principal\",\r\n    \"isActive\": false\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/admin/editar-administrador/1",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"admin",
+												"editar-administrador",
+												"1"
+											]
+										}
+									},
+									"response": []
 								}
-							},
-							"response": []
+							]
 						}
 					]
 				},
 				{
-					"name": "asignaciones",
+					"name": "final",
 					"item": [
 						{
-							"name": "postAsigancionPermiso",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"modulo_padre_id\": 31,\r\n    \"nombre_permiso\": \"me_la_suda\",\r\n    \"user_id\": 1\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
+							"name": "user",
+							"item": [
+								{
+									"name": "getUsuarios",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/user?page=1&limit=3&field=id&order=asc",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"user"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "3"
+												},
+												{
+													"key": "field",
+													"value": "id"
+												},
+												{
+													"key": "order",
+													"value": "asc"
+												}
+											]
 										}
-									}
+									},
+									"response": []
 								},
-								"url": {
-									"raw": "localhost:3000/api/asignacion/postAsigancionPermiso",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"asignacion",
-										"postAsigancionPermiso"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getMisPermisosMenu",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/asignacion/mis-permisos?idUser=1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"asignacion",
-										"mis-permisos"
-									],
-									"query": [
-										{
-											"key": "idUser",
-											"value": "1"
+								{
+									"name": "getUsuario-Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/user/obtener-usuario/1",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"user",
+												"obtener-usuario",
+												"1"
+											]
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "deleteAsignacionPermiso",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/asignacion/deleteAsignacionPermiso?idModulo=31&nombrePermiso=me_la_suda&userId=1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"asignacion",
-										"deleteAsignacionPermiso"
-									],
-									"query": [
-										{
-											"key": "idModulo",
-											"value": "31"
-										},
-										{
-											"key": "nombrePermiso",
-											"value": "me_la_suda"
-										},
-										{
-											"key": "userId",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getAsignacionMePertenece",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/asignacion/getAsignacionMePertenece?idModulo=1&nombre=administradores&idUser=1",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"asignacion",
-										"getAsignacionMePertenece"
-									],
-									"query": [
-										{
-											"key": "idModulo",
-											"value": "1"
-										},
-										{
-											"key": "nombre",
-											"value": "administradores"
-										},
-										{
-											"key": "idUser",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "listar_mis_permisos_modulo",
-							"request": {
-								"auth": {
-									"type": "noauth"
+									},
+									"response": []
 								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/asignacion/mis-permisos?idUser=1&heredadosDe=usuarios",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"asignacion",
-										"mis-permisos"
-									],
-									"query": [
-										{
-											"key": "idUser",
-											"value": "1"
+								{
+									"name": "postUsuario",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Usuario1\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user1@gmail.com\",\r\n    \"isActive\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
-										{
-											"key": "heredadosDe",
-											"value": "usuarios"
+										"url": {
+											"raw": "localhost:3000/api/user/crear-usuario",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"user",
+												"crear-usuario"
+											]
 										}
-									]
+									},
+									"response": []
+								},
+								{
+									"name": "deleteUsuario",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/user/eliminar-usuario/4",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"user",
+												"eliminar-usuario",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "putUsuario",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Javier\",\r\n    \"lastName\": \"Baron\",\r\n    \"isActive\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/user/editar-usuario/4",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"user",
+												"editar-usuario",
+												"4"
+											]
+										}
+									},
+									"response": []
 								}
-							},
-							"response": []
+							]
+						},
+						{
+							"name": "auth",
+							"item": [
+								{
+									"name": "singinUser",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"user1@gmail.com\",\r\n    \"pass\": \"Qwerty9601\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/authuser/login",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"authuser",
+												"login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "profileUser",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tokenUser}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:3000/api/authuser/profile",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"authuser",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "refreshUser",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"token\": \"{{tokenUser}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/authuser/refresh",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"authuser",
+												"refresh"
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					]
 				}

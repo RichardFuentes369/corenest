@@ -4,7 +4,7 @@ import { UpdateAsignacionDto } from './dto/update-asignacion.dto';
 
 import { Repository } from 'typeorm';
 import { Asignacion } from './entities/asignacion.entity';
-import { Modulo } from '../modulos/entities/modulo.entity';
+import { Modulo } from '@module/modules/entities/modulo.entity';
 
 @Injectable()
 export class AsignacionService {
