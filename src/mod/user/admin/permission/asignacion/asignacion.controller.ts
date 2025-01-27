@@ -26,7 +26,7 @@ export class AsignacionController {
   @ApiTags('asignacion_permiso')
   @Put('updateAsignacionPermiso')
   updateAsignacion(@Query() query) {
-    return this.asignacionService.updateAsignacion(+query.idPermiso, +query.idPadre, +query.opcion, +query.idUser);
+    return this.asignacionService.updateAsignacion(+query.idPermiso, query.idPadre, +query.opcion, +query.idUser);
   }
 
 

@@ -59,7 +59,13 @@ export class AsignacionService {
     return Modulos;
   }
 
-  async updateAsignacion(idPermiso: number, idPadre: number, opcion: number, idUser: number){
+  async updateAsignacion(idPermiso: number, idPadre: string, opcion: number, idUser: number){
+
+    // console.log(idPermiso)
+    // console.log(idPadre)
+    // console.log(idUser)
+    // console.log(opcion)
+    // return
     const permisoMaestro = await this.moduloRepository.findOne({
       where: {
         id: idPermiso

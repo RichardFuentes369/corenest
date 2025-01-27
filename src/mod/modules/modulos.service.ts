@@ -85,16 +85,22 @@ export class ModulosService {
     ])
     .addSelect(subQuery => {
       return subQuery
-        .select('COUNT(mpma.nombre_permiso) > 0')
+        .select('CASE WHEN mpma.nombre_permiso IS NOT NULL THEN 1 ELSE 0 END as asignado')
         .from('mod_permisos_modulo_asignacion', 'mpma')
-        .where('mpma.nombre_permiso = mpm.nombre_permiso')
-        .andWhere('mpma.modulo_padre_id = mpm.modulo_padre_id OR mpm.modulo_padre_id IS NULL')
-        .andWhere('mpma.user_id = :userId', { userId: queryParams.userId });
+        .andWhere(`
+          CASE WHEN mpm.modulo_padre_id IS NULL THEN
+            mpma.modulo_padre_id IS NULL AND
+            mpma.nombre_permiso = mpm.nombre_permiso
+          ELSE
+            mpma.nombre_permiso = mpm.nombre_permiso AND
+            mpma.modulo_padre_id = mpm.modulo_padre_id
+          END
+        `)
+        .andWhere('mpma.user_id = :userId', { userId: queryParams.userId })
     }, 'asignado')
     .getRawMany();
 
     const result = this.organizarJerarquia(query)
-
     return result;
   }
 
