@@ -39,11 +39,11 @@ export class AuthadminService {
   async refreshToken(tokenDto: TokenDto): Promise<any> {
     const tokenUsuario = await this.jwtService.decode(tokenDto.token)
     if(!tokenUsuario){
-      throw new NotFoundException('Error!', { cause: new Error(), description: 'token invalido' })
+      throw new NotFoundException(this.i18n.t('auth.ERROR'), { cause: new Error(), description: this.i18n.t('auth.MSN_INVALID') })
     }
     const user = await this.adminService.findUsernameEmail(tokenUsuario.email);
     if(!user){
-      throw new NotFoundException('Error!', { cause: new Error(), description: 'user not exists' })
+      throw new NotFoundException(this.i18n.t('auth.ERROR'), { cause: new Error(), description: this.i18n.t('auth.MSN_NOT_REGISTER') })
     }
     const payload = { id: user.id, email: user.email };
     const token = await  this.jwtService.sign(payload);

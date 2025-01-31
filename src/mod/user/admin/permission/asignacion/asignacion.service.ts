@@ -5,6 +5,7 @@ import { UpdateAsignacionDto } from './dto/update-asignacion.dto';
 import { Repository } from 'typeorm';
 import { Asignacion } from './entities/asignacion.entity';
 import { Modulo } from '@module/modules/entities/modulo.entity';
+import { I18nService } from 'nestjs-i18n';
 
 @Injectable()
 export class AsignacionService {
@@ -13,6 +14,7 @@ export class AsignacionService {
     private moduloRepository: Repository<Modulo>,
     @Inject('PERMISO_ASIGNACION_REPOSITORY')
     private asignacionRepository: Repository<Asignacion>,
+    private i18n: I18nService
   ) {}
 
   async findOne(moduloId: number, nombrePermiso: string, userId: number): Promise<Asignacion>{
@@ -73,9 +75,19 @@ export class AsignacionService {
         'modulo_padre_id':  (permisoMaestro.modulo_padre_id) ? permisoMaestro.modulo_padre_id : null,
         'user_id': idUser
       }
-      return this.asignacionRepository.save(model);
+      
+      try {
+        const guardarAsignacion = this.asignacionRepository.save(model)
+        return {
+          'title': this.i18n.t('user.MSN_PERMISO_ASIGNADO_TITTLE'),
+          'message': this.i18n.t('user.MSN_PERMISO_ASIGNADO_MESSAGE'),
+          'status': 200,
+        }
+      } catch (error) {
+        throw new NotFoundException(this.i18n.t('user.ERROR'), { cause: new Error(), description: this.i18n.t('user.MSN_IS_DESACTIVED') });
+      }
     }
-
+    
     if(permisoMaestro){
       const permisoAsignado = await this.asignacionRepository.findOne({
         where: {
@@ -84,7 +96,17 @@ export class AsignacionService {
           'user_id': idUser
         },  
       });
-      return this.asignacionRepository.delete(permisoAsignado.id);
+      
+      try {
+        const actualizarAsignacion = this.asignacionRepository.delete(permisoAsignado.id);
+        return {
+          'title': this.i18n.t('user.MSN_PERMISO_ASIGNADO_TITTLE'),
+          'message': this.i18n.t('user.MSN_PERMISO_REMOVIDO_MESSAGE'),
+          'status': 200,
+        }
+      } catch (error) {
+        throw new NotFoundException(this.i18n.t('user.ERROR'), { cause: new Error(), description: this.i18n.t('user.MSN_IS_DESACTIVED') });
+      }
     }
 
   }

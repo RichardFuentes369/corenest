@@ -9,7 +9,14 @@ export type I18nTranslations = {
         "ERROR": string;
         "MSN_NOT_REGISTER": string;
         "MSN_IS_DESACTIVED": string;
+        "MSN_INVALID": string;
         "PASSWORD_INVALID": string;
+    };
+    "user": {
+        "ERROR": string;
+        "MSN_PERMISO_ASIGNADO_TITTLE": string;
+        "MSN_PERMISO_ASIGNADO_MESSAGE": string;
+        "MSN_PERMISO_REMOVIDO_MESSAGE": string;
     };
 };
 /* prettier-ignore */
