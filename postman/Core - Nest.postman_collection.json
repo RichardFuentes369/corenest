@@ -42,7 +42,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"modulo_padre_id\": 23,\r\n    \"nombre_permiso\": \"elasiminar\"\r\n}",
+							"raw": "{\r\n    \"modulo_padre_id\": 0,\r\n    \"nombre_permiso\": \"zzz\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,7 +70,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/modulos/deleteModuloPermiso?idModulo=23&nombre=elasiminar",
+							"raw": "localhost:3000/api/modulos/deleteModuloPermiso?idModulo=0&nombre=zzz",
 							"host": [
 								"localhost"
 							],
@@ -83,11 +83,11 @@
 							"query": [
 								{
 									"key": "idModulo",
-									"value": "23"
+									"value": "0"
 								},
 								{
 									"key": "nombre",
-									"value": "elasiminar"
+									"value": "zzz"
 								}
 							]
 						}
@@ -124,7 +124,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/modulos/getPermisoExistente?idModulo=0&nombre=modulo",
+							"raw": "localhost:3000/api/modulos/getPermisoExistente?idModulo=0&nombre=zzxz",
 							"host": [
 								"localhost"
 							],
@@ -141,7 +141,7 @@
 								},
 								{
 									"key": "nombre",
-									"value": "modulo"
+									"value": "zzxz"
 								}
 							]
 						}

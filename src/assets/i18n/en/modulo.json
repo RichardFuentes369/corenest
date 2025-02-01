@@ -6,5 +6,6 @@
   "MSN_PERMISO_REMOVIDO_OK": "successfully removed",
 
   "MSJ_ERROR_PERMISO_EXISTENTE": "This permission already exists in our database.",
-  "MSJ_ERROR_PERMISO_PADRE_NO_EXISTENTE": "No action can be taken, the parent does not exist in our database."
+  "MSJ_ERROR_PERMISO_PADRE_NO_EXISTENTE": "No action can be taken, the parent does not exist in our database.",
+  "MSJ_ERROR_PERMISO_TIENE_PERMISOS_HIJOS": "No action can be taken, this permission contains child permissions."
 }

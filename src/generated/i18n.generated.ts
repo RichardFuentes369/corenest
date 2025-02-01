@@ -20,6 +20,7 @@ export type I18nTranslations = {
         "MSN_PERMISO_REMOVIDO_OK": string;
         "MSJ_ERROR_PERMISO_EXISTENTE": string;
         "MSJ_ERROR_PERMISO_PADRE_NO_EXISTENTE": string;
+        "MSJ_ERROR_PERMISO_TIENE_PERMISOS_HIJOS": string;
         "MSJ_ERROR_PERMISO_NO_EXISTENTE": string;
     };
     "user": {

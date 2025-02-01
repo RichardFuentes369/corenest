@@ -107,51 +107,100 @@ export class ModulosService {
   }
 
   async findPermiso(moduloId: number, nombrePermiso: string, opcion?: string){
-    let whereClause: any = {};
-    let whereClause2: any = {};
 
-    if (moduloId != 0) {
-      whereClause.modulo_padre_id = moduloId;
-      whereClause2.id = moduloId;
-    }else{
-      whereClause.modulo_padre_id = null;
+    let consulta = []
+
+    if(moduloId == 0 && opcion == 'CREATE'){
+      consulta = await this.moduloRepository.createQueryBuilder("modulo")
+      .where("modulo.modulo_padre_id IS NULL")
+      .andWhere("modulo.nombre_permiso  = :nombrePermiso", { nombrePermiso: nombrePermiso })
+      .getMany();
+      
+      if(consulta.length > 0) throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_EXISTENTE') }
+      )
+    }
+    if(moduloId != 0 && opcion == 'CREATE'){
+      consulta = await this.moduloRepository.createQueryBuilder("modulo")
+      .where("modulo.id = :idPadre", { idPadre: moduloId })
+      .getMany();
+
+      if(consulta.length == 0) throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_PADRE_NO_EXISTENTE') }
+      )
+
+      consulta = await this.moduloRepository.createQueryBuilder("modulo")
+      .where("modulo.modulo_padre_id = :idPadre", { idPadre: moduloId })
+      .andWhere("modulo.nombre_permiso = :nombrePermiso", { nombrePermiso: nombrePermiso })
+      .getMany();
+
+      if(consulta.length > 0) throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_EXISTENTE') }
+      )
     }
     
-    const peticion2 = await this.moduloRepository.find({ where: whereClause2 })
+    if(moduloId == 0 && opcion == 'DELETE'){
+      
+      consulta = await this.moduloRepository.createQueryBuilder("modulo")
+      .where("modulo.modulo_padre_id IS NULL")
+      .andWhere("modulo.nombre_permiso = :nombrePermiso", { nombrePermiso: nombrePermiso })
+      .getMany();
+        
+      if(consulta.length == 0) throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_NO_EXISTENTE') }
+      )
 
-    if(moduloId != 0 && peticion2.length == 0) throw new NotFoundException(
-      this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_PADRE_NO_EXISTENTE') }
-    )
+      let consulta2 = await this.moduloRepository.createQueryBuilder("modulo")
+      .where("modulo.modulo_padre_id = :idPadre", { idPadre: consulta[0].id })
+      .getMany();
+      
+      if(consulta2.length > 0) throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_TIENE_PERMISOS_HIJOS') }
+      )
 
-    whereClause.nombre_permiso = nombrePermiso;
+    }
+    if(moduloId != 0 && opcion == 'DELETE'){
+      consulta = await this.moduloRepository.createQueryBuilder("modulo")
+      .where("modulo.modulo_padre_id = :idPadre", { idPadre: moduloId })
+      .getMany();
 
-    const peticion = await this.moduloRepository.find({ where: whereClause })
+      if(consulta.length == 0) throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_PADRE_NO_EXISTENTE') }
+      )
 
-    if(moduloId != 0 && peticion.length != 0 && opcion != 'DELETE') throw new NotFoundException(
-      this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_EXISTENTE') }
-    )
+      consulta = await this.moduloRepository.createQueryBuilder("modulo")
+      .where("modulo.modulo_padre_id = :idPadre", { idPadre: consulta[0].id })
+      .getMany();
 
-    return peticion;
+      if(consulta.length > 0) throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_TIENE_PERMISOS_HIJOS') }
+      )
+
+      consulta = await this.moduloRepository.createQueryBuilder("modulo")
+      .where("modulo.modulo_padre_id = :idPadre", { idPadre: moduloId })
+      .andWhere("modulo.nombre_permiso = :nombrePermiso", { nombrePermiso: nombrePermiso })
+      .getMany();
+
+      if(consulta.length == 0) throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_NO_EXISTENTE') }
+      )
+    }
+
+    return consulta
   }
 
   async create(createModuleDto: CreateModuloDto) {
-
-    let moduloId = null
-
-    if(createModuleDto.modulo_padre_id && createModuleDto.modulo_padre_id != 0){
-      moduloId = createModuleDto.modulo_padre_id
-    }else{
-      moduloId = 0
-    }
-
-    let busquedaPermiso = await this.findPermiso(moduloId, createModuleDto.nombre_permiso)
-
-    if(busquedaPermiso.length > 0) throw new NotFoundException(
-      this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_EXISTENTE') }
-    )
+    
+    let busquedaPermiso = await this.findPermiso(createModuleDto.modulo_padre_id, createModuleDto.nombre_permiso, 'CREATE')
 
     try {
-      const crearModulo = this.moduloRepository.save(createModuleDto);
+
+      let model = {
+        'modulo_padre_id': (createModuleDto.modulo_padre_id == 0) ? null : createModuleDto.modulo_padre_id,
+        'nombre_permiso': createModuleDto.nombre_permiso,
+      }
+
+      const crearModulo = await this.moduloRepository.save(model);
 
       return {
         'title': this.i18n.t('modulo.MSJ_PERMISO_TITTLE'),
@@ -162,24 +211,17 @@ export class ModulosService {
       console.log(error)
     }
 
-
   }
 
   async delete(query: any){
 
     let idRegistro = await this.findPermiso(query.idModulo, query.nombre, 'DELETE')
-    const [Modulo] = idRegistro
-    try {
-      const elimiarModulo = this.moduloRepository.delete(Modulo.id);
-      return {
-        'title': this.i18n.t('modulo.MSJ_PERMISO_TITTLE'),
-        'message': this.i18n.t('modulo.MSN_PERMISO_REMOVIDO_OK'),
-        'status': 200,
-      }
-    } catch (error) {
-      throw new NotFoundException(
-        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_NO_EXISTENTE') }
-      )
+    const elimiarModulo = this.moduloRepository.delete(idRegistro[0].id);
+    
+    return {
+      'title': this.i18n.t('modulo.MSJ_PERMISO_TITTLE'),
+      'message': this.i18n.t('modulo.MSN_PERMISO_REMOVIDO_OK'),
+      'status': 200,
     }
     
   }
