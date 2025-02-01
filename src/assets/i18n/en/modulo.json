@@ -1,0 +1,10 @@
+{
+  "ERROR": "Error!",
+  "MSJ_PERMISO_TITTLE": "Permission",
+  "MSJ_ERROR_PERMISO_NO_EXISTENTE ": "This permission does not exist in our database.",
+  "MSJ_PERMISO_CREADO_OK": "successfully created",
+  "MSN_PERMISO_REMOVIDO_OK": "successfully removed",
+
+  "MSJ_ERROR_PERMISO_EXISTENTE": "This permission already exists in our database.",
+  "MSJ_ERROR_PERMISO_PADRE_NO_EXISTENTE": "No action can be taken, the parent does not exist in our database."
+}

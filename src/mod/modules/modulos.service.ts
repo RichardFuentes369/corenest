@@ -4,12 +4,14 @@ import { CreateModuloDto } from './dto/create-modulo.dto';
 import { IsNull, Repository } from 'typeorm';
 import { Modulo } from './entities/modulo.entity';
 import { PaginationDto } from '@global/dto/pagination.dto';
+import { I18nService } from 'nestjs-i18n';
 
 @Injectable()
 export class ModulosService {
   constructor(
     @Inject('PERMISO_MODULO_REPOSITORY')
     private moduloRepository: Repository<Modulo>,
+    private i18n: I18nService
   ) {}
   
   listarPropiedadesTabla(T) {
@@ -104,29 +106,39 @@ export class ModulosService {
     return result;
   }
 
-  async findPermiso(moduloId: number, nombrePermiso: string): Promise<Modulo>{
+  async findPermiso(moduloId: number, nombrePermiso: string, opcion?: string){
+    let whereClause: any = {};
+    let whereClause2: any = {};
 
-    if(moduloId == 0){
-      return this.moduloRepository.findOne({
-        where: {
-          nombre_permiso: nombrePermiso
-        },
-      });
+    if (moduloId != 0) {
+      whereClause.modulo_padre_id = moduloId;
+      whereClause2.id = moduloId;
     }else{
-      return this.moduloRepository.findOne({
-        where: {
-          nombre_permiso: nombrePermiso,
-          modulo_padre_id: moduloId
-        },
-      });
+      whereClause.modulo_padre_id = null;
     }
+    
+    const peticion2 = await this.moduloRepository.find({ where: whereClause2 })
 
+    if(moduloId != 0 && peticion2.length == 0) throw new NotFoundException(
+      this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_PADRE_NO_EXISTENTE') }
+    )
+
+    whereClause.nombre_permiso = nombrePermiso;
+
+    const peticion = await this.moduloRepository.find({ where: whereClause })
+
+    if(moduloId != 0 && peticion.length != 0 && opcion != 'DELETE') throw new NotFoundException(
+      this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_EXISTENTE') }
+    )
+
+    return peticion;
   }
 
   async create(createModuleDto: CreateModuloDto) {
 
     let moduloId = null
-    if(createModuleDto.modulo_padre_id){
+
+    if(createModuleDto.modulo_padre_id && createModuleDto.modulo_padre_id != 0){
       moduloId = createModuleDto.modulo_padre_id
     }else{
       moduloId = 0
@@ -134,18 +146,41 @@ export class ModulosService {
 
     let busquedaPermiso = await this.findPermiso(moduloId, createModuleDto.nombre_permiso)
 
-    if(busquedaPermiso) throw new NotFoundException(`
-      Este permiso, ya existe en nuestra base de datos
-    `)
+    if(busquedaPermiso.length > 0) throw new NotFoundException(
+      this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_EXISTENTE') }
+    )
 
-    return this.moduloRepository.save(createModuleDto);
+    try {
+      const crearModulo = this.moduloRepository.save(createModuleDto);
+
+      return {
+        'title': this.i18n.t('modulo.MSJ_PERMISO_TITTLE'),
+        'message': this.i18n.t('modulo.MSJ_PERMISO_CREADO_OK'),
+        'status': 200,
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
 
   }
 
   async delete(query: any){
 
-    let idRegistro = (await this.findPermiso(query.idModulo, query.nombre)).id
-    return this.moduloRepository.delete(idRegistro);
+    let idRegistro = await this.findPermiso(query.idModulo, query.nombre, 'DELETE')
+    const [Modulo] = idRegistro
+    try {
+      const elimiarModulo = this.moduloRepository.delete(Modulo.id);
+      return {
+        'title': this.i18n.t('modulo.MSJ_PERMISO_TITTLE'),
+        'message': this.i18n.t('modulo.MSN_PERMISO_REMOVIDO_OK'),
+        'status': 200,
+      }
+    } catch (error) {
+      throw new NotFoundException(
+        this.i18n.t('modulo.ERROR'), { cause: new Error(), description: this.i18n.t('modulo.MSJ_ERROR_PERMISO_NO_EXISTENTE') }
+      )
+    }
     
   }
 
